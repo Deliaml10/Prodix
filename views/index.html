@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Prodix - Inicio</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/prodixIcon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="../assets/plugins/slick/slick.css">
+    <link rel="stylesheet" href="../assets/plugins/slick/slick-theme.css">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
+
+    <!-- Aos CSS -->
+    <link rel="stylesheet" href="../assets/plugins/aos/aos.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <script>
+        window.onload = function (){
+
+            const button = document.getElementById('buttonAppear');
+            const saludo = document.getElementById('saludo');
+         
+            const username = '{{username}}'; // Asumiendo que esto contiene la URL de la imagen
+
+            // Verifica si username no es null
+            if (username !== 'null' && username !== '') {
+                saludo.style.display = 'block';
+                button.style.display = 'none';
+                saludo.innerText=username;
+            } else {
+                saludo.style.display = 'none';
+                button.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-fixed">
+                <nav class="navbar navbar-expand-lg header-nav scroll-sticky">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a id="mobile_btn" href="javascript:void(0);">
+                                <span class="bar-icon">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </a>
+                            <a href="/" class="navbar-brand logo">
+                                <img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+                            </a>
+                        </div>
+                        <div class="main-menu-wrapper">
+                            <div class="menu-header">
+                                <a href="index.html" class="menu-logo">
+                                    <img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+                                </a>
+                                <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </div>
+                            <ul class="main-nav">
+                                <li class="has-submenu active">
+                                    <a href="/">Inicio</a>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="course-grid.html">Anuncios</a>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="#">Empresa <i class="fas fa-chevron-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="instructor-manager.html">Buscar estudiantes</a></li>
+                                        <li><a href="add-course.html">Crear oferta</a></li>
+                                        <li><a href="instructor-edit-profile.html">Ver ofertas</a></li>
+                                        <li><a href="instructor-security.html">Seguridad Cuenta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="#">Estudiante<i class="fas fa-chevron-down"></i></a>
+                                    <ul class="submenu first-submenu">
+                                        <li><a href="setting-edit-profile.html">Buscar empresas</a></li>
+                                        <li><a href="my-course-list.html">Crear oferta</a></li>
+                                        <li><a href="my-course-list.html">Ver ofertas</a></li>
+                                        <li><a href="setting-student-security.html">Seguridad Cuenta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu d-lg-none">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#authModal">Iniciar Sesión /
+                                        Registro</a>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="faq.html">FAQ</a>
+                                </li>
+                            </ul>
+                        </div>
+                     
+                        <ul class="nav header-navbar-rht">
+                            <!-- Botón para abrir el modal -->
+                    
+            
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#authModal" id="buttonAppear">
+                                Iniciar Sesión / Registro
+                            </button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#authModal" id="saludo">
+                                
+                            </button>
+                            
+                        </ul>
+                       
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <!-- Modal de Autenticación -->
+        <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 1200px;">
+                <!-- Ancho más amplio -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="authModalLabel">Autenticación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Inicio de Sesión -->
+                            <div class="col-md-6 d-flex flex-column align-items-start mb-4">
+                                <h2 class="text-center w-100">Iniciar Sesión</h2>
+                                <form role="form" action="/post/user" method="post" class="w-100">
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Correo electrónico</label>
+                                        <input type="email" class="form-control"
+                                            placeholder="Introduce tu correo electrónico" id="email" name="email" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Contraseña</label>
+                                        <div class="pass-group">
+                                            <input type="password" class="form-control pass-input"
+                                                placeholder="Introduce tu contraseña" id="password" name="password" required >
+                                            <span class="feather-eye toggle-password"></span>
+                                        </div>
+                                        <span><a class="forgot-link" href="forgot-password.html">¿Has olvidado tu
+                                                contraseña?</a></span>
+                                    </div>
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" id="rememberSession">
+                                        <label class="form-check-label" for="rememberSession">Recordar sesión</label>
+                                    </div>
+                                    <button class="btn btn-primary btn-start btn-sm" type="submit">Iniciar
+                                        Sesión</button>
+                                </form>
+                            </div>
+
+                            <!-- Divisor -->
+                            <div class="col-12 d-md-none my-4 text-center">
+                                <hr class="w-100">
+                                <span class="text-muted">Ó</span>
+                                <hr class="w-100">
+                            </div>
+
+                            <!-- Registro -->
+                            <div class="col-md-6 d-flex flex-column align-items-start">
+                                <h2 class="text-center w-100">Crear Cuenta</h2>
+                                <form role="form" action="post/new" class="w-100" method="post">
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Nombre completo</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Introduce tu nombre completo" id="name" name="name" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Correo electrónico</label>
+                                        <input type="email" class="form-control"
+                                            placeholder="Introduce tu correo electrónico" id="email" name="email" required autofocus>
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Contraseña</label>
+                                        <div class="pass-group">
+                                            <input type="password" class="form-control pass-input"
+                                                placeholder="Introduce tu contraseña" id="password" name="password" required>
+                                            <span class="feather-eye toggle-password"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Foto de contacto</label>
+                                        <input type="url" class="form-control"
+                                            placeholder="Introduce tu foto de contacto" id="foto" name="foto" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Ubicación </label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Introduce tu lugar de hospedaje " id="ubicación" name="ubicación" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Fecha de nacimiento</label>
+                                        <input type="date" class="form-control"
+                                            placeholder="Introduce tu fecha de nacimiento" id="nacimiento" name="nacimiento" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Estudios</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Introduce tu historial de estudios" id="estudios" name="estudios" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Trabajos previos</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Introduce tu historial de trabajos" id="trabajos" name="trabajos" required >
+                                    </div>
+                                    <div class="input-block mb-4">
+                                        <label class="form-control-label">Crear cuenta como:</label>
+                                        <div class="d-flex">
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio" name="userType"
+                                                    id="empresa" value="empresa">
+                                                <label class="form-check-label" for="empresa">Empresa</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="userType"
+                                                    id="estudiante" value="estudiante">
+                                                <label class="form-check-label" for="estudiante">Estudiante</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" name="terms" id="terms">
+                                        <label class="form-check-label" for="terms">Estoy de acuerdo con los <a
+                                                href="term-condition.html">Términos de Servicio</a> y la <a
+                                                href="privacy-policy.html">Política de Privacidad</a></label>
+                                    </div>
+                                    <button class="btn btn-primary btn-start btn-sm" type="submit" value="Save">Crear Cuenta</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Home Banner -->
+        <section class="home-slide d-flex align-items-center">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-7">
+                        <div class="home-slide-face aos" data-aos="fade-up">
+                            <div class="home-slide-text ">
+                                <h1>Servicios online y en persona atractivos y accesibles para todos</h1>
+                                <p>Domina tu futuro contratando gente que tiene las habilidades que necesitas</p>
+                            </div>
+                            <div class="banner-content">
+                                <form class="form" action="course-grid.html">
+                                    <div class="form-inner">
+                                        <div class="input-group">
+                                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                            <input type="email" class="form-control"
+                                                placeholder="Busca el servicio que necesites">
+                                            <button class="btn btn-primary sub-btn" type="submit"><i
+                                                    class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="trust-user">
+                                <p>Con la confianza de más de 15K usuarios <br> en todo el mundo desde 2023</p>
+                                <div class="trust-rating d-flex align-items-center">
+                                    <div class="rate-head">
+                                        <h2><span>1000</span>+</h2>
+                                    </div>
+                                    <div class="rating d-flex align-items-center">
+                                        <h2 class="d-inline-block average-rating">4.4</h2>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <div class="girl-slide-img aos" data-aos="fade-up">
+                            <img src="../assets/img/object.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Home Banner -->
+        <section class="section student-course">
+            <div class="container">
+                <div class="course-widget">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="course-full-width">
+                                <div class="blur-border course-radius align-items-center aos" data-aos="fade-up">
+                                    <div class="online-course d-flex align-items-center">
+                                        <div class="course-img">
+                                            <img src="../assets/img/pencil-icon.svg" alt="">
+                                        </div>
+                                        <div class="course-inner-content">
+                                            <h4>10K</h4>
+                                            <p>Servicios ofertados</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 d-flex">
+                            <div class="course-full-width">
+                                <div class="blur-border course-radius aos" data-aos="fade-up">
+                                    <div class="online-course d-flex align-items-center">
+                                        <div class="course-img">
+                                            <img src="../assets/img/cources-icon.svg" alt="">
+                                        </div>
+                                        <div class="course-inner-content">
+                                            <h4>200+</h4>
+                                            <p>Personas certificadas </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 d-flex">
+                            <div class="course-full-width">
+                                <div class="blur-border course-radius aos" data-aos="fade-up">
+                                    <div class="online-course d-flex align-items-center">
+                                        <div class="course-img">
+                                            <img src="../assets/img/certificate-icon.svg" alt="">
+                                        </div>
+                                        <div class="course-inner-content">
+                                            <h4>6K+</h4>
+                                            <p>Servicios certificados</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 d-flex">
+                            <div class="course-full-width">
+                                <div class="blur-border course-radius aos" data-aos="fade-up">
+                                    <div class="online-course d-flex align-items-center">
+                                        <div class="course-img">
+                                            <img src="../assets/img/gratuate-icon.svg" alt="">
+                                        </div>
+                                        <div class="course-inner-content">
+                                            <h4>15K+</h4>
+                                            <p>usuarios registrados </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Home Banner -->
+
+        <!-- Feature Course -->
+        <section class="section new-course">
+            <div class="container">
+                <div class="section-header aos" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <span>TOP ANNOUNCEMENTS</span>
+                        <h2>Empresas recomendadas</h2>
+                    </div>
+                    <div class="all-btn all-category d-flex align-items-center">
+                        <a href="course-list.html" class="btn btn-primary">Todas las empresas</a>
+                    </div>
+                </div>
+                <div class="section-text aos" data-aos="fade-up">
+                    <p class="mb-0">Descubre las mejores ofertas de empresas para poder trabajar con ellos y ganar
+                        experiencia</p>
+                </div>
+                <div class="course-feature">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-01.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Creación de
+                                                Bases de datos</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>GOOGLE</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>30€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.8</span> (15)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-02.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Diseño de logo
+                                                de empresa</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>Tetería Martín</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>18€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.3</span> (18)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-03.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Diseñador de
+                                                aplicaciones</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>Tienda Informática</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>18€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.5</span> (23)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-04.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Aplicación
+                                                móvil</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>Techso</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>25€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.2</span> (10)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-05.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Construir sitios
+                                                web responsive con HTML5 y CSS3</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>Amazon</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>30€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.0</span> (15)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="course-box d-flex aos" data-aos="fade-up">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <a href="course-details.html">
+                                            <img class="img-fluid" alt="" src="../assets/img/course/course-06.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title instructor-text"><a href="course-details.html">Programador para
+                                                C#
+                                                con Visual Studio Code</a></h3>
+                                        <div class="course-info d-flex align-items-center">
+                                            <div class="rating-img d-flex align-items-center">
+                                                <img src="../assets/img/icon/people.svg" alt="">
+                                                <p>Nike</p>
+                                            </div>
+                                            <div class="course-view d-flex align-items-center">
+                                                <img src="../assets/img/icon/cart.svg" alt="">
+                                                <p>25€/hora</p>
+                                            </div>
+                                        </div>
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="d-inline-block average-rating"><span>4.9</span> (38)</span>
+                                        </div>
+                                        <div class="all-btn all-category d-flex align-items-center">
+                                            <a href="course-details.html" class="btn btn-primary">INSCRIBIRME</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Feature Course -->
+
+        <section class="section share-knowledge">
+            <div class="container">
+                <div class="section-header aos" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <span>Novedades</span>
+                        <h2>Estudiantes en tendencia</h2>
+                    </div>
+                    <div class="all-btn all-category d-flex align-items-center">
+                        <a href="course-list.html" class="btn btn-primary">Todos los estudiantes</a>
+                    </div>
+                </div>
+                <div class="section-text aos" data-aos="fade-up">
+                    <p class="mb-0">Explora nuestros estudiantes en tendencia, donde encontrarás a estudiantes con gran
+                        soltura y fluidez en sus respectivos campos.</p>
+                </div>
+                <div class="owl-carousel trending-course owl-theme aos" data-aos="fade-up">
+                    <div class="course-box trend-box">
+                        <div class="product trend-product">
+                            <div class="product-img">
+                                <a href="course-details.html">
+                                    <img class="img-fluid" alt="" src="../assets/img/teacher_tecnology.webp">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <p>Nombre: Juan Pérez</p>
+                                <p>Páginas web</p>
+                                <h3 class="title"><a href="course-details.html">Apasionado de la tecnología con más de 8
+                                        años de experiencia creando páginas web. Mi objetivo es
+                                        hacer que la programación y la tecnología sean accesibles para todos.</a></h3>
+                                <div class="course-info d-flex align-items-center">
+                                    <div class="rating-img d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-01.svg" alt="" class="img-fluid">
+
+                                    </div>
+                                    <div class="course-view d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-02.svg" alt="" class="img-fluid">
+                                        <p>15$/2hr</p>
+                                        <p>Ubicación: Madrid (Presencial)</p>
+
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating"><span>4.4</span> (129)</span>
+                                </div>
+                                <div class="all-btn all-category d-flex align-items-center">
+                                    <a href="course-details.html" class="btn btn-primary">CONTACTAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-box trend-box">
+                        <div class="product trend-product">
+                            <div class="product-img">
+                                <a href="course-details.html">
+                                    <img class="img-fluid" alt="" src="../assets/img/algebra-teacher.webp">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <p>Nombre: Carlos Navarro</p>
+                                <p>Diseño de bases de datos</p>
+                                <h3 class="title"><a href="course-details.html">Soy un estudiante de ingeniería del
+                                        software con gran capacidad a la hora de crear y entender bases de datos.</a>
+                                </h3>
+                                <div class="course-info d-flex align-items-center">
+                                    <div class="rating-img d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-01.svg" alt="" class="img-fluid">
+
+                                    </div>
+                                    <div class="course-view d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-02.svg" alt="" class="img-fluid">
+                                        <p>20$/2hr 30min</p>
+                                        <p>Ubicación: Alicante (Presencial u Online) </p>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating"><span>3.2</span> (97)</span>
+                                </div>
+                                <div class="all-btn all-category d-flex align-items-center">
+                                    <a href="course-details.html" class="btn btn-primary">CONTACTAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-box trend-box">
+                        <div class="product trend-product">
+                            <div class="product-img">
+                                <a href="course-details.html">
+                                    <img class="img-fluid" alt="" src="../assets/img/inglés-teacher.jpg">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <p>Nombre: María González</p>
+                                <p>Java avanzado</p>
+                                <h3 class="title"><a href="course-details.html">Soy una estudiante con grandes dotes
+                                        para la programación en java, sin importar a qué esté aplicado.</a></h3>
+                                <div class="course-info d-flex align-items-center">
+                                    <div class="rating-img d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-01.svg" alt="" class="img-fluid">
+
+                                    </div>
+                                    <div class="course-view d-flex align-items-center">
+                                        <img src="../assets/img/icon/icon-02.svg" alt="" class="img-fluid">
+                                        <p>12$/1hr 30min</p>
+                                        <p>Ubicación: Sevilla (Presencial u Online)</p>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <span class="d-inline-block average-rating"><span>4.9</span> (381)</span>
+                                </div>
+                                <div class="all-btn all-category d-flex align-items-center">
+                                    <a href="course-details.html" class="btn btn-primary">CONTACTAR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Leading Companies -->
+        <section class="section lead-companies">
+            <div class="container">
+                <div class="section-header aos" data-aos="fade-up">
+                    <div class="section-sub-head feature-head text-center">
+                        <span>Con la confianza de</span>
+                        <h2>Universidades y empresas líderes</h2>
+                    </div>
+                </div>
+                <div class="lead-group aos" data-aos="fade-up">
+                    <div class="lead-group-slider owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-01.png">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-02.png">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-03.png">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-04.png">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-05.png">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="lead-img">
+                                <img class="img-fluid" alt="" src="../assets/img/lead-06.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Leading Companies -->
+
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <!-- Footer Top -->
+            <div class="footer-top aos" data-aos="fade-up">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8">
+
+                            <!-- Footer Widget -->
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="../assets/img/prodixLogo.png" alt="logo">
+                                </div>
+                                <div class="">
+                                    <p>
+                                        Descubre las mejores ofertas tanto para empresas como para estudiantes.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /Footer Widget -->
+
+                        </div>
+
+                        <div class="col-lg-2 col-md-6">
+
+                            <!-- Footer Widget -->
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">Enlace útiles</h2>
+                                <ul>
+                                    <li><a href="course-grid.html">Preguntas frecuentes</a></li>
+                        
+                                </ul>
+                            </div>
+                            <!-- /Footer Widget -->
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+
+                            <!-- Footer Widget -->
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contacto</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <img src="../assets/img/icon/icon-20.svg" alt="" class="img-fluid">
+                                        <p> C. Tulipán, s/n, Móstoles<br> Madrid, 28933</p>
+                                    </div>
+                                    <p>
+                                        <img src="../assets/img/icon/icon-19.svg" alt="" class="img-fluid">
+                                        <a href="mailto:prodix@gmail.com">prodix@gmail.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /Footer Widget -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Footer Top -->
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+
+                    <!-- Copyright -->
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="privacy-policy">
+                                    <ul>
+                                        <li><a href="term-condition.html">Terminos y condiciones</a></li>
+                                        <li><a href="privacy-policy.html">Política de privacidad</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2024 DAW G1. Todos los derechos reservados.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Copyright -->
+
+                </div>
+            </div>
+            <!-- /Footer Bottom -->
+
+        </footer>
+        <!-- /Footer -->
+
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- counterup JS -->
+    <script src="../assets/js/jquery.waypoints.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="../assets/plugins/select2/js/select2.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="../assets/js/owl.carousel.min.js"></script>
+
+    <!-- Slick Slider -->
+    <script src="../assets/plugins/slick/slick.js"></script>
+
+    <!-- Aos -->
+    <script src="../assets/plugins/aos/aos.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
