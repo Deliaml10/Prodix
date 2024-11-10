@@ -58,9 +58,7 @@
 						<div class="loginbox">
 							<div class="img-logo">
 								<img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
-								<div class="back-home">
-									<a href="/{{user.id}}">Volver al inicio</a>
-								</div>
+				
 							</div>
 							<h1>Perfil de {{name}}</h1>
 							<div class="reset-password">
@@ -76,11 +74,13 @@
 							</div>
 
 				
-
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#authModal">
-                                Editar perfil
-                            </button>
+							<button type="button" class="btn btn-primary" >
+							<a href="/{{user.id}} " class="white-text" >Volver al inicio</a>
+						</button>
+						<button type="button" class="btn btn-primary" >
+							<a href="/delete/{{user.id}} " class="white-text" >Eliminar cuenta</a>
+						</button>
+				
 						
 						</div>
 					</div>

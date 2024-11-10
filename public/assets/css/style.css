@@ -28769,3 +28769,14 @@ input[type=password]::-ms-clear {
         margin-bottom: 50px;
     }
 }
+
+
+
+.white-text {
+    color: white; 
+    text-decoration: none;
+}
+
+.white-text:hover {
+    text-decoration: underline; 
+}

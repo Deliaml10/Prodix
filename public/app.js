@@ -5,7 +5,7 @@ export function getValidation(email,name){
 
 
     const users= service.getUsers();
-    const isregistered= users.find(user => user.email===email && user.name===name)
+    const isregistered= users.find(user => user.email===email || user.name===name)
     if(isregistered){
         return false;
     }
@@ -23,6 +23,7 @@ export function getValidationLogin(email,password){
     }
     return true;
     
+
 }
 
 
