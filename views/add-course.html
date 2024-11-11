@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Prodix</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/img/prodixIcon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Feather CSS -->
+	<link rel="stylesheet" href="../assets/css/feather.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
+
+	<!-- Bootstrap Tagsinput CSS -->
+	<link rel="stylesheet" href="../assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="../assets/css/style.css">
+	
+</head>
+<body>
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	<!-- Header -->
+	<header class="header header-page">
+		<div class="header-fixed">
+			<nav class="navbar navbar-expand-lg header-nav scroll-sticky">
+				<div class="container ">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+									<span class="bar-icon">
+										<span></span>
+										<span></span>
+										<span></span>
+									</span>
+						</a>
+						<a href="index.html" class="navbar-brand logo">
+							<img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="index.html" class="menu-logo">
+								<img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="has-submenu">
+								<a class="" href="/">Inicio</a>
+							</li>
+							<li class="has-submenu">
+								<a class="" href="/course-grid">Cursos</a>
+							</li>
+							<li class="has-submenu active">
+								<a href="">Administrador<i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li><a href="instructor-manager.html">Perfil</a></li>
+									<li><a href="add-course.html">Crear Curso</a></li>
+									<li><a href="instructor-edit-profile.html">Gestionar Usuarios</a></li>
+
+									<li><a href="instructor-dashboard.html">Estadísticas</a></li>
+									<li><a href="instructor-security.html">Seguridad Cuenta</a></li>
+								</ul>
+							</li>
+							<li class="has-submenu">
+								<a href="">Estudiante<i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu first-submenu">
+									<li><a href="setting-edit-profile.html">Perfil</a></li>
+									<li><a href="my-course-list.html">Mis Cursos</a></li>
+									<li><a href="setting-student-security.html">Seguridad Cuenta</a></li>
+								</ul>
+							</li>
+							<li class="has-submenu">
+								<a href="faq.html">FAQ</a>
+							</li>
+						</ul>
+					</div>
+
+					<ul class="nav header-navbar-rht">
+						<li class="nav-item user-nav">
+							<a>Mi perfil</a>
+						</li>
+						<li class="nav-item user-nav">
+							<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+										<span class="user-img">
+											<img src="../assets/img/instructor/profile-avatar.jpg" alt="">
+											<span class="status online"></span>
+										</span>
+							</a>
+							<div class="users dropdown-menu dropdown-menu-right" data-popper-placement="bottom-end" >
+								<div class="user-header">
+									<div class="avatar avatar-sm">
+										<img src="../assets/img/instructor/profile-avatar.jpg" alt="User Image" class="avatar-img rounded-circle">
+									</div>
+									<div class="user-text">
+										<h6>Jenny Wilson</h6>
+										<p class="text-muted mb-0">Administrador</p>
+									</div>
+								</div>
+								<a class="dropdown-item" href="instructor-manager.html"><i class="feather-home me-1"></i> Panel de control</a>
+								<a class="dropdown-item" href="instructor-edit-profile.html"><i class="feather-star me-1"></i> Editar perfil</a>
+								<a class="dropdown-item" href="index.html"><i class="feather-log-out me-1"></i> Cerrar sesión</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<section class="page-content course-sec">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-12">
+					<div class="add-course-header">
+						<h2 class="text-center text-primary">Publicar Nueva Vacante</h2>
+						<p class="text-center text-muted">Por favor, completa los detalles del trabajo que deseas ofrecer.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<!-- Job Posting Wizard -->
+						<div class="widget-set">
+							<div class="widget-setcount">
+								<ul id="progressbar" class="progressbar">
+									<li class="progress-active">
+										<p><span></span> Información del Trabajo</p>
+									</li>
+									<li>
+										<p><span></span> Detalles Adicionales</p>
+									</li>
+									<li>
+										<p><span></span> Completado</p>
+									</li>
+								</ul>
+							</div>
+							<div class="widget-content multistep-form">
+								<form method="POST" action="/add-course/{{id}}">
+									<!-- Información del Trabajo -->
+									<fieldset id="first">
+										<div class="add-course-info">
+											<div class="add-course-inner-header">
+												<h4 class="section-title">Información Básica del Trabajo</h4>
+											</div>
+											<div class="add-course-form">
+												<div class="input-block">
+													<label class="add-course-label">Nombre de la empresa</label>
+													<input name="company_name" type="text" class="form-control" placeholder="Nombre de la empresa">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Título del Trabajo</label>
+													<input name="job_title" type="text" class="form-control" placeholder="Título del trabajo">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Subtítulo del trabajo</label>
+													<input name="job_subtitle" type="text" class="form-control" placeholder="Subtítulo del trabajo">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Salario Estimado</label>
+													<input name="salary" type="number" step="0.01" class="form-control" placeholder="Salario estimado">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Categoría del Trabajo</label>
+													<select name="job_category" class="form-control select">
+														<option value="" disabled selected>Selecciona una categoría</option>
+														<option>Desarrollador de Software</option>
+														<option>Diseñador UX/UI</option>
+														<option>Administrador de Base de Datos</option>
+														<option>Analista de Datos</option>
+														<option>Marketing Digital</option>
+														<option>Gestor de Proyectos</option>
+														<option>Soporte Técnico</option>
+														<option>Consultor</option>
+													</select>
+												</div>
+												<div class="input-block mb-0">
+													<label class="add-course-label">Descripción del Trabajo</label>
+													<textarea name="job_description" style="resize: none;width: 100%" class="ck ck-reset ck-editor ck-rounded-corners" rows="10" cols="137"></textarea>
+												</div>
+												<div class="input-block mb-0">
+													<label class="add-course-label">URL de la imagen del trabajo</label>
+													<input name="image_url" type="text" class="form-control" placeholder="URL de la imagen" title="Debe ser una URL válida, comenzando con http:// o https://">
+												</div>
+											</div>
+											<div class="widget-btn">
+												<a class="btn btn-info-light next_btn">Siguiente</a>
+											</div>
+										</div>
+									</fieldset>
+	
+									<!-- Detalles Adicionales -->
+									<fieldset class="field-card">
+										<div class="add-course-info">
+											<div class="add-course-inner-header">
+												<h4 class="section-title">Detalles Adicionales del Trabajo</h4>
+											</div>
+											<div class="add-course-form">
+												<div class="input-block">
+													<label class="add-course-label">Requisitos del Trabajo</label>
+													<textarea name="job_requirements" style="resize: none;width: 100%" class="ck ck-reset ck-editor ck-rounded-corners" rows="6" cols="137"></textarea>
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Ubicación</label>
+													<input name="location" type="text" class="form-control" placeholder="Ubicación del trabajo">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Duración del Trabajo</label>
+													<input name="job_duration" type="text" class="form-control" placeholder="Ej. 6 meses, tiempo completo, remoto">
+												</div>
+												<div class="input-block">
+													<label class="add-course-label">Fecha de Publicación</label>
+													<input name="posting_date" type="date" class="form-control">
+												</div>
+											</div>
+	
+											<div class="widget-btn">
+												<a class="btn btn-secondary prev_btn">Atrás</a>
+												<input style="background-color:green" class="btn btn-info-light next_btn" id="courseSubmit" type="submit" value="Guardar">
+											</div>
+										</div>
+									</fieldset>
+	
+									<!-- Completado -->
+									<fieldset class="field-card">
+										<div class="add-course-info">
+											<div class="add-course-inner-header">
+												<h4 class="section-title">Trabajo Publicado</h4>
+											</div>
+											<div class="add-course-form">
+												<div class="input-block">
+													<label class="add-course-label">¡Tu trabajo ha sido publicado exitosamente!</label>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<!-- /Job Posting Wizard -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	
+	
+	
+	<!-- /New Course -->
+
+	<!-- Footer -->
+	<footer class="footer">
+
+		<!-- Footer Top -->
+		<div class="footer-top" data-aos="fade-up">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-8">
+
+						<!-- Footer Widget -->
+						<div class="footer-widget footer-about">
+							<div class="footer-logo">
+								<img src="../assets/img/prodixLogo.png" alt="logo">
+							</div>
+							<div class="">
+								<p>
+									Descubre cursos gratuitos en Tatademy. Aprende a tu propio ritmo, desde cualquier lugar. ¡Únete a nuestra comunidad hoy!
+								</p>
+							</div>
+						</div>
+						<!-- /Footer Widget -->
+
+					</div>
+
+					<div class="col-lg-2 col-md-6">
+
+						<!-- Footer Widget -->
+						<div class="footer-widget footer-menu">
+							<h2 class="footer-title">Enlace útiles</h2>
+							<ul>
+								<li><a href="/course-grid">Cursos</a></li>
+							</ul>
+						</div>
+						<!-- /Footer Widget -->
+
+					</div>
+
+					<div class="col-lg-4 col-md-6">
+
+						<!-- Footer Widget -->
+						<div class="footer-widget footer-contact">
+							<h2 class="footer-title">Contacto</h2>
+							<div class="footer-contact-info">
+								<div class="footer-address">
+									<img src="../assets/img/icon/icon-20.svg" alt="" class="img-fluid">
+									<p> C. Tulipán, s/n, Móstoles<br> Madrid, 28933</p>
+								</div>
+								<p>
+									<img src="../assets/img/icon/icon-19.svg" alt="" class="img-fluid">
+									<a href="mailto:tatademy@gmail.com">tatademy@gmail.com</a>
+								</p>
+							</div>
+						</div>
+						<!-- /Footer Widget -->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- /Footer Top -->
+
+		<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="container">
+
+				<!-- Copyright -->
+				<div class="copyright">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="privacy-policy">
+								<ul>
+									<li><a href="term-condition.html">Terminos y condiciones</a></li>
+									<li><a href="privacy-policy.html">Política de privacidad</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="copyright-text">
+								<p class="mb-0">&copy; 2024 DAW G1. Todos los derechos reservados.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Copyright -->
+
+			</div>
+		</div>
+		<!-- /Footer Bottom -->
+
+	</footer>
+	<!-- /Footer -->
+
+</div>
+<!-- /Main Wrapper -->
+
+<!-- jQuery -->
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../assets/js/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="../assets/plugins/select2/js/select2.min.js"></script>
+
+<!-- Ckeditor JS -->
+<script src="../assets/js/ckeditor.js"></script>
+
+<!-- Bootstrap Tagsinput JS -->
+<script src="../assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+
+<!-- Custom JS -->
+<script src="../assets/js/script.js"></script>
+<script src="contadorImages.js"></script>
+<script src="contadorContent.js"></script>
+<script src="sendForm.js"></script>
+
+</body>
+</html>

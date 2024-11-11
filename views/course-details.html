@@ -1,0 +1,435 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>Prodix</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="/assets/img/prodixIcon.png">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+		
+		<!-- Feather CSS -->
+		<link rel="stylesheet" href="/assets/css/feather.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="/assets/css/style.css">
+
+		<style>
+			.whitespace-pre-line {
+				white-space: pre-line;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">		
+				 <!-- Header -->
+				 <header class="header header-page">
+					<div class="header-fixed">
+						<nav class="navbar navbar-expand-lg header-nav scroll-sticky">
+							<div class="container header-border">
+								<div class="navbar-header">
+									<a id="mobile_btn" href="javascript:void(0);">
+										<span class="bar-icon">
+											<span></span>
+											<span></span>
+											<span></span>
+										</span>
+									</a>
+									<a href="/" class="navbar-brand logo">
+										<img src="/assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+									</a>
+								</div>
+								<div class="main-menu-wrapper">
+									<div class="menu-header">
+										<a href="/" class="menu-logo">
+												<img src="/assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+											</a>
+										<a id="menu_close" class="menu-close" href="javascript:void(0);">
+												<i class="fas fa-times"></i>
+											</a>
+									</div>
+									<ul class="main-nav">
+										<li class="has-submenu">
+											<a class="" href="/">Inicio</a>
+										</li>
+										<li class="has-submenu active">
+											<a class="" href="/course-grid">Cursos</a>
+										</li>
+										<li class="has-submenu">
+											<a href="">Administrador<i class="fas fa-chevron-down"></i></a>
+											<ul class="submenu">
+												<li><a href="instructor-manager.html">Perfil</a></li>
+												<li><a href="add-course.html">Crear Curso</a></li>
+												<li><a href="instructor-edit-profile.html">Gestionar Usuarios</a></li>
+												
+												<li><a href="instructor-dashboard.html">Estadísticas</a></li>
+												<li><a href="instructor-security.html">Seguridad Cuenta</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="">Estudiante<i class="fas fa-chevron-down"></i></a>
+											<ul class="submenu first-submenu">
+												<li><a href="setting-edit-profile.html">Perfil</a></li>
+												<li><a href="my-course-list.html">Mis Cursos</a></li>
+												<li><a href="setting-student-security.html">Seguridad Cuenta</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="faq.html">FAQ</a>
+										</li>
+									</ul>
+								</div>
+	
+								<ul class="nav header-navbar-rht">
+									<li class="nav-item user-nav">
+										<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+											<span class="user-img">
+												<img src="/assets/img/user/user11.jpg" alt="">
+												<span class="status online"></span>
+											</span>
+										</a>
+										<div class="users dropdown-menu dropdown-menu-right" data-popper-placement="bottom-end" >
+											<div class="user-header">
+												<div class="avatar avatar-sm">
+													<img src="/assets/img/user/user11.jpg" alt="User Image" class="avatar-img rounded-circle">
+												</div>
+												<div class="user-text">
+													<h6>Rolands R</h6>
+													<p class="text-muted mb-0">Student</p>
+												</div>
+											</div>
+											<a class="dropdown-item" href="setting-edit-profile.html"><i class="feather-user me-1"></i> Perfil</a>
+											<a class="dropdown-item" href="my-course-list.html"><i class="feather-star me-1"></i> Mis cursos</a>
+											<a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i> Cerrar Sesión</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+				</header>
+				<!-- /Header -->
+	
+	
+					
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<div class="breadcrumb-list" style="text-align: center">
+								<nav aria-label="breadcrumb" class="page-breadcrumb">
+
+
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+										<li class="breadcrumb-item"><a href="course-grid.html">Buscar cursos</a></li>
+										<li class="breadcrumb-item" aria-current="page" style="margin-right: 200px">{{post.job_title}}</li>
+									</ol>
+
+									
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Inner Banner -->
+			<div class="inner-banner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="instructor-wrap border-bottom-0 m-0">
+								
+								<span class="web-badge mb-3">{{post.job_category}}</span>
+							</div>
+							<h2>{{post.job_title}}</h2>
+							<p>{{post.job_subtitle}}</p>
+							<div class="about-instructor align-items-center">								
+								<div class="rating mb-0">							
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star filled"></i>
+									<i class="fas fa-star"></i>
+									<span class="d-inline-block average-rating"><span>4.5</span> (15)</span>
+								</div>
+							</div>				
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Inner Banner -->
+			
+			<!-- Course Content -->
+			<section class="page-content course-sec">
+				<div class="container">
+				
+					<div class="row">
+						<div class="col-lg-8">
+						
+							<!-- Overview -->
+							<div class="card overview-sec">
+								<div class="card-body">
+									<h5 class="subs-title">Descripción de la oferta</h5>
+									<h6>Descripción de la oferta</h6>
+									<p>{{post.job_description}}</p>
+									
+									
+								</div>
+							</div>
+							<!-- /Overview -->
+							
+							<!-- Course Content -->
+							<div class="card content-sec">
+								<div class="card-body">
+									<h5 class="subs-title">Requisitos del postulante</h5>
+									<h6>Requisitos del postulante</h6>
+									<p class="whitespace-pre-line">{{post.job_requirements}}</p>						
+								</div>
+							</div>
+							<!-- /Course Content -->
+							
+							<!-- Reviews -->
+							<div class="card review-sec">
+								<div class="card-body">
+									<h5 class="subs-title">Reseñas</h5>
+									
+									{{#post.comments}}
+									<div class="instructor-wrap">
+										<div class="about-instructor">
+											<div class="abt-instructor-img">
+												<a href="instructor-profile.html">
+													<img src="/assets/img/user/3686930.png" alt="img" class="img-fluid">
+												</a>
+											</div>
+											<div class="instructor-detail">
+												<h5><a>{{name}}</a></h5>
+											</div>
+										</div>
+									</div>
+									<h5>{{asunto}}</h5>
+									<p class="rev-info">“ {{comment}} “</p>
+									<br>
+
+									{{/post.comments}}
+
+									{{^post.comments}}
+									<p>No hay comentarios. Se el primero!</p>
+									{{/post.comments}}	
+									
+								</div>
+							</div>
+							<!-- /Reviews -->
+
+							<!-- Comment -->
+							<div class="card comment-sec">
+								<div class="card-body">
+									<h5 class="subs-title">Escribe tu reseña</h5>
+									<form action="/course-details/{{post.pid}}/{{id}}" method="POST">
+										<input type="hidden" name="pid" value="{{post.pid}}">
+										<input type="hidden" name="id" value="{{post.id}}">
+										
+										<div class="input-block">
+											<input name="cname" type="text" class="form-control" placeholder="Nombre completo" required>
+										</div>
+										<div class="input-block">
+											<input name="asunto" type="text" class="form-control" placeholder="Asunto" required>
+										</div>
+										<div class="input-block">
+											<textarea name="comment" rows="4" class="form-control" placeholder="Tus comentarios" required></textarea>
+										</div>
+										<div class="submit-section">
+											<button class="btn submit-btn" type="submit">Enviar</button>
+										</div>
+									</form>
+																		
+								</div>
+							</div>
+							<!-- /Comment -->
+							
+							
+							
+							
+							
+							
+						</div>	
+						
+						<div class="col-lg-4">
+							<div class="sidebar-sec">
+							
+								<!-- Video -->
+								<div class="video-sec vid-bg">
+									<div class="card">
+										<div class="card-body">
+											<a href="" class="video-thumbnail" data-fancybox="">
+												<img class="" src="{{post.image_url}}" alt="">
+											</a>
+											<div class="video-details">
+												<div class="course-fee">
+												<h2>{{post.salary}}€</h2>
+												</div>
+												<a href="#" class="btn btn-enroll w-100">Inscribirse</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Video -->
+								
+								<!-- Include -->
+								
+								<!-- /Include -->
+								
+								<!-- Features -->
+								<div class="card feature-sec">
+									<div class="card-body">
+										<div class="cat-title">
+											<h4>Acerca del curso</h4>
+										</div>
+										<ul>
+											<li><img src="/assets/img/icon/users.svg" class="me-2" alt=""> Compañia: <span>{{post.company_name}}</span></li>
+											<li><img src="/assets/img/icon/timer.svg" class="me-2" alt=""> Duración: <span>{{post.job_duration}}</span></li>
+											<li><img src="/assets/img/icon/chapter.svg" class="me-2" alt=""> Dirección: <span>{{post.location}}</span></li>
+											<li><img src="/assets/img/icon/chart.svg" class="me-2" alt=""> Fecha de publicación: <span>{{post.posting_date}}</span></li>
+										</ul>
+									</div>
+								</div>
+								<!-- /Features -->
+								
+								
+							</div>
+						</div>
+					</div>	
+				</div>
+			</section>
+			<!-- /Pricing Plan -->
+			
+
+
+			<!-- Footer -->
+			<footer class="footer">
+
+				<!-- Footer Top -->
+				<div class="footer-top aos" data-aos="fade-up">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 col-md-8">
+	
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="/assets/img/prodixLogo.png" alt="logo">
+									</div>
+									<div class="">
+										<p>
+											Descubre cursos gratuitos en Tatademy. Aprende a tu propio ritmo, desde cualquier lugar. ¡Únete a nuestra comunidad hoy!
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+	
+							</div>
+	
+							<div class="col-lg-2 col-md-6">
+	
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">Enlace útiles</h2>
+									<ul>
+										<li><a href="/course-grid">Cursos</a></li>
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+	
+							</div>
+	
+							<div class="col-lg-4 col-md-6">
+	
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contacto</h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<img src="/assets/img/icon/icon-20.svg" alt="" class="img-fluid">
+											<p> C. Tulipán, s/n, Móstoles<br> Madrid, 28933</p>
+										</div>
+										<p>
+											<img src="/assets/img/icon/icon-19.svg" alt="" class="img-fluid">
+											<a href="mailto:tatademy@gmail.com">tatademy@gmail.com</a>
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+	
+							</div>
+	
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+	
+				<!-- Footer Bottom -->
+				<div class="footer-bottom">
+					<div class="container">
+	
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="privacy-policy">
+										<ul>
+											<li><a href="term-condition.html">Terminos y condiciones</a></li>
+											<li><a href="privacy-policy.html">Política de privacidad</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="copyright-text">
+										<p class="mb-0">&copy; 2024 DAW G1. Todos los derechos reservados.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->
+	
+					</div>
+				</div>
+				<!-- /Footer Bottom -->
+	
+			</footer>
+			<!-- /Footer -->
+		   
+		</div>
+	   <!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/js/jquery-3.7.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Select2 JS -->
+	  	<script src="/assets/plugins/select2/js/select2.min.js"></script>
+
+	  	<!-- Ckeditor JS -->
+	  	<script src="/assets/js/ckeditor.js"></script>
+
+	  	<!-- Bootstrap Tagsinput JS -->
+		<script src="/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="/assets/js/script.js"></script>
+		
+	</body>
+</html>
