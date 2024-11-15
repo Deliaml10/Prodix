@@ -4,6 +4,7 @@ let nextId = 0;
 export function addUser(user){
     let id= nextId++;
     user.id=id.toString();
+    user.posts = []; // Agregar un array vacío para almacenar los posts del usuario
     users.set(user.id,user);
     return user.id;
 }
@@ -42,7 +43,15 @@ export function addPost(post) {
     post.comments = [];
     post.pid = pid.toString();
     posts.set(post.pid, post);
+    let user = getUser(post.id);
+    if (user) {
+        user.posts.push(post); 
+    }
     return pid
+}
+
+export function getUserPosts(id) {
+    return getUser(id).posts; 
 }
 
 export function deletePost(pid){
@@ -68,6 +77,10 @@ export function addPoste(poste) {
     let pid = postId_e++;
     poste.pid = pid.toString();
     posts_e.set(poste.pid, poste);
+    let user = getUser(poste.id);
+    if (user) {
+        user.posts.push(poste); 
+    }
     return pid
 }
 

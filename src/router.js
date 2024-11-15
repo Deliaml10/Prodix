@@ -232,4 +232,31 @@ router.get('/delete/:id', (req, res) => {
     });
 });
 
+router.get('/history/:id?', (req, res) => {
+    const id = req.params.id;
+    let posts = service.getUserPosts(id);
+    let hasPosts = false; 
+
+    let user = validateUser(id); 
+    if (user) {
+        let hasPost = posts.some(post => post.hasOwnProperty('company_name'));
+        let hasPoste = posts.some(post => post.hasOwnProperty('full_name'));
+
+        if (hasPost && hasPoste) {
+            res.render('course-grid', { id: user.id, posts }); 
+            hasPosts = true;
+        } else if (hasPost) {
+            res.render('course-grid', { id: user.id, posts });
+            hasPosts = true;
+        } else if (hasPoste) {
+            res.render('course-grid-e', { id: user.id, posts }); 
+            hasPosts = true;
+        } 
+    }
+
+    res.redirect(`/${user ? user.id : ''}`); 
+});
+
 export default router;
+
+
