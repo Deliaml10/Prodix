@@ -43,6 +43,10 @@
             const button = document.getElementById('buttonAppear');
             const saludo = document.getElementById('saludo');
             const type=document.getElementById('type');
+            const empresas=document.getElementById('_empresas_');
+            const estudiantes=document.getElementById('estudiantes');
+            const creaCurriculum=document.getElementById('creaCurriculum');
+            const creaPuestos=document.getElementById('creaPuestos');
             
             const nombre=document.getElementById('nombre');
 
@@ -56,11 +60,26 @@
                 button.style.display = 'none';
                 nombre.style.display='block';
                 nombre.innerText = username;
+                if (utype==='estudiante'){
+                    estudiantes.style.display='none';
+                    empresas.style.display='block';
+                    creaCurriculum.style.display='block';
+                    creaPuestos.style.display='none';
+                }else{
+                    estudiantes.style.display='block';
+                    empresas.style.display='none';
+                    creaCurriculum.style.display='none'; 
+                    creaPuestos.style.display='block';
+                }
             } else {
                 saludo.style.display = 'none';
                 button.style.display = 'block';
                 type.style.display = 'block';
-                nombre.style.display='none'
+                nombre.style.display='none';
+                estudiantes.style.display='block';
+                empresas.style.display='block';
+                creaCurriculum.style.display='none';
+                creaPuestos.style.display='none';
             }
         }
     </script>
@@ -98,18 +117,24 @@
                             </div>
                             <ul class="main-nav">
                                 <li class="has-submenu active">
-                                    <a href="/">Inicio</a>
+                                    <a href="/{{id}}">Inicio</a>
                                 </li>
+                            
                                 <li class="has-submenu">
-                                    <a href="/course-grid/{{id}}">Anuncios</a>
-                                </li>
-                                <li class="has-submenu">
-                                    <a href="#">Empresa <i class="fas fa-chevron-down"></i></a>
+                                    <a href="#" id="_empresas_">Empresa <i class="fas fa-chevron-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="instructor-manager.html">Buscar estudiantes</a></li>
-                                        <li><a href="add-course.html">Crear oferta</a></li>
-                                        <li><a href="instructor-edit-profile.html">Ver ofertas</a></li>
-                                        <li><a href="instructor-security.html">Seguridad Cuenta</a></li>
+                                        <li><a href="/course-grid/{{id}}">Buscar puestos de trabajo</a></li>
+                                        <li><a href="/add-course-e/{{id}}" id="creaCurriculum">Crear curriculum</a></li>
+                                
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="#" id="estudiantes">Estudiantes <i class="fas fa-chevron-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="/course-grid-e/{{id}}">Buscar estudiantes</a></li>
+                                        
+                                        <li><a href="/add-course/{{id}}" id="creaPuestos">Crear puestos de empleo</a></li>
+                                       
                                     </ul>
                                 </li>
                                
@@ -143,8 +168,7 @@
                                             </div>
                                             <a class="dropdown-item" href="/user/{{id}}"><i
                                                     class="feather-user me-1"></i> Perfil</a>
-                                            <a class="dropdown-item" href="my-course-list.html"><i class="feather-star me-1"></i>
-                                                Mis cursos</a>
+    
                                             <a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i> Cerrar
                                                 Sesión</a>
                                             <a class="dropdown-item" href="/history/{{id}}"><i class="feather-book me-1"></i> Historial</a>
@@ -200,8 +224,7 @@
                                                 required>
                                             <span class="feather-eye toggle-password"></span>
                                         </div>
-                                        <span><a class="forgot-link" href="forgot-password.html">¿Has olvidado tu
-                                                contraseña?</a></span>
+                                    
                                     </div>
                                     <div class="form-check mb-4">
                                         <input class="form-check-input" type="checkbox" id="rememberSession">
@@ -435,9 +458,7 @@
                         <span>TOP ANNOUNCEMENTS</span>
                         <h2>Empresas recomendadas</h2>
                     </div>
-                    <div class="all-btn all-category d-flex align-items-center">
-                        <a href="course-list.html" class="btn btn-primary">Todas las empresas</a>
-                    </div>
+                   
                 </div>
                 <div class="section-text aos" data-aos="fade-up">
                     <p class="mb-0">Descubre las mejores ofertas de empresas para poder trabajar con ellos y ganar
@@ -675,9 +696,7 @@
                         <span>Novedades</span>
                         <h2>Estudiantes en tendencia</h2>
                     </div>
-                    <div class="all-btn all-category d-flex align-items-center">
-                        <a href="course-list.html" class="btn btn-primary">Todos los estudiantes</a>
-                    </div>
+                   
                 </div>
                 <div class="section-text aos" data-aos="fade-up">
                     <p class="mb-0">Explora nuestros estudiantes en tendencia, donde encontrarás a estudiantes con gran

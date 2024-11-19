@@ -58,61 +58,27 @@
 								</div>
 								<ul class="main-nav">
 									<li class="has-submenu">
-										<a class="" href="/">Inicio</a>
+										<a class="" href="/{{id}}">Inicio</a>
 									</li>
 									<li class="has-submenu active">
-										<a class="" href="/course-grid">Cursos</a>
+										<a class="" href="/course-grid/{{id}}">Cursos</a>
 									</li>
-									<li class="has-submenu">
-										<a href="">Administrador<i class="fas fa-chevron-down"></i></a>
-										<ul class="submenu">
-											<li><a href="instructor-manager.html">Perfil</a></li>
-											<li><a href="add-course.html">Crear Curso</a></li>
-											<li><a href="instructor-edit-profile.html">Gestionar Usuarios</a></li>
-											
-											<li><a href="instructor-dashboard.html">Estadísticas</a></li>
-											<li><a href="instructor-security.html">Seguridad Cuenta</a></li>
-										</ul>
-									</li>
+									
 									<li class="has-submenu">
 										<a href="">Estudiante<i class="fas fa-chevron-down"></i></a>
 										<ul class="submenu first-submenu">
-											<li><a href="setting-edit-profile.html">Perfil</a></li>
-											<li><a href="my-course-list.html">Mis Cursos</a></li>
-											<li><a href="setting-student-security.html">Seguridad Cuenta</a></li>
+											<li><a href="/user/{{id}}">Mi Perfil</a></li>
+											<li><a href="/history/{{id}}">Mis Cursos</a></li>
+											
 										</ul>
 									</li>
 									<li class="has-submenu">
-										<a href="faq.html">FAQ</a>
+										<a href="/faq/{{id}}">FAQ</a>
 									</li>
 								</ul>
 							</div>
 
-							<ul class="nav header-navbar-rht">
-								<li class="nav-item user-nav">
-									<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-										<span class="user-img">
-											<img src="../assets/img/user/user11.jpg" alt="">
-											<span class="status online"></span>
-										</span>
-									</a>
-									<div class="users dropdown-menu dropdown-menu-right" data-popper-placement="bottom-end" >
-										<div class="user-header">
-											<div class="avatar avatar-sm">
-												<img src="../assets/img/user/user11.jpg" alt="User Image" class="avatar-img rounded-circle">
-											</div>
-											<div class="user-text">
-												<h6>Rolands R</h6>
-												<p class="text-muted mb-0">Student</p>
-											</div>
-										</div>
-										<a class="dropdown-item" href="setting-edit-profile.html"><i class="feather-user me-1"></i> Perfil</a>
-										<a class="dropdown-item" href="my-course-list.html"><i class="feather-star me-1"></i> Mis cursos</a>
-										<a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i> Cerrar Sesión</a>
-										<a class="dropdown-item" href="/history/{{id}}"><i class="feather-book me-1"></i> Historial</a>
-									</div>
-								</li>
-							</ul>
+						
 						</div>
 					</nav>
 				</div>
@@ -129,8 +95,8 @@
 							<div class="breadcrumb-list">
 								<nav aria-label="breadcrumb" class="page-breadcrumb">
 									<ol class="breadcrumb">
-										<li class="breadcrumb-item"><a href="/">Inicio</a></li>
-										<li class="breadcrumb-item active" aria-current="page">Buscar cursos</li>
+										<li class="breadcrumb-item"><a href="/{{id}}">Inicio</a></li>
+										
 									</ol>
 								</nav>
 							</div>
@@ -367,20 +333,6 @@
 	
 							</div>
 	
-							<div class="col-lg-2 col-md-6">
-	
-								<!-- Footer Widget -->
-								<div class="footer-widget footer-menu">
-									<h2 class="footer-title">Enlace útiles</h2>
-									<ul>
-										<li><a href="/course-grid">Cursos</a></li>
-										<li><a href="login.html">Iniciar sesión</a></li>
-										<li><a href="register.html">Registrarse</a></li>
-									</ul>
-								</div>
-								<!-- /Footer Widget -->
-	
-							</div>
 	
 							<div class="col-lg-4 col-md-6">
 	
@@ -394,7 +346,7 @@
 										</div>
 										<p>
 											<img src="../assets/img/icon/icon-19.svg" alt="" class="img-fluid">
-											<a href="mailto:tatademy@gmail.com">tatademy@gmail.com</a>
+											<a href="mailto:tatademy@gmail.com">prodix@gmail.com</a>
 										</p>
 									</div>
 								</div>

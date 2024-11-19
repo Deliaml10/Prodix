@@ -102,14 +102,15 @@ router.post('/add-course-e/:id', (req, res) => {
     
     const id = req.params.id || null;  
     
+    
     let { full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title } = req.body;
     
     full_name = full_name.charAt(0).toUpperCase() + full_name.slice(1);
     email = email.toLowerCase();
-    
+    let user=service.getUser(id);
     service.addPoste({ full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title, id });
 
-    res.redirect('/');
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 //nuevo post empresa
@@ -125,10 +126,10 @@ router.post('/add-course/:id', (req, res) => {
     let { company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date } = req.body;
     salary = parseFloat(salary).toFixed(2);   
     company_name = company_name.charAt(0).toUpperCase() + company_name.slice(1);
-   
+    let user=service.getUser(id);
     service.addPost({ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id });
 
-    res.redirect('/'); 
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 
@@ -253,8 +254,9 @@ router.get('/history/:id?', (req, res) => {
             hasPosts = true;
         } 
     }
-
+    if (!hasPosts) {
     res.redirect(`/${user ? user.id : ''}`); 
+    }
 });
 
 export default router;
