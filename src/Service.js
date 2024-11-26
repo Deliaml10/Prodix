@@ -1,3 +1,5 @@
+/// USERS
+
 export const users= new Map();
 let nextId = 0;
 
@@ -8,6 +10,35 @@ export function addUser(user){
     users.set(user.id,user);
     return user.id;
 }
+
+//EJEMPLO
+
+// CASO PRUEBA EJEMPLO ESTUDIANTE
+
+ addUser( {
+    name: "Johnathan Smith",
+    email: "john.smith@gmail.com",
+    password: "mypassword123",  // Al menos 10 caracteres
+    foto: "https://www.clarin.com/2023/12/01/rhVeUAooY_2000x1500__1.jpg",
+    ubicación: "New York, USA", // Al menos 10 caracteres
+    nacimiento: "1990-04-15",   // Fecha de nacimiento en formato "YYYY-MM-DD"
+    estudios: "Computer Science Degree",  // Al menos 10 caracteres
+    trabajos: "Software Developer at XYZ Corp",  // Al menos 10 caracteres
+    userType: "estudiante"
+}); 
+
+//CASO PRUEBA EJEMPLO EMPRESA
+
+addUser({name: "Innovative Solutions LLC",
+    email: "contact@gmail.com",
+    password: "securepassword456",  // Al menos 10 caracteres
+    foto: "https://media.revistagq.com/photos/621343d2c789a63cc825a58b/16:9/w_2367,h_1331,c_limit/virgen%20a%20lo%2040.jpeg",
+    ubicación: "San Francisco, California", // Al menos 10 caracteres
+    nacimiento: "2010-07-20",   // Fecha de creación de la empresa en formato "YYYY-MM-DD"
+    estudios: "Business and Tech Training",  // Al menos 10 caracteres
+    trabajos: "Software and IT Services",  // Al menos 10 caracteres
+    userType: "empresa"
+}) 
 
 export function getUsers(){
     let values=[...users.values()];
@@ -32,31 +63,76 @@ export function getUserByCredenciales(email) {
     return null;  
 }
 
+export function editUser(id, updatedData){
+
+    let user= users.get(id);
+    if (user) {
+        Object.assign(user, updatedData);
+        return user;
+    }
+    return null;
+
+}
+
+
+
 //POSTS
 const posts = new Map();
 let postId = 0;
 const posts_e = new Map();
 let postId_e = 0;
 
-export function addPost(post) {
-    let pid = postId++;
+export function addPost(post, pid) {
+    if (!pid) {
+        pid = postId++;
+    }
     post.comments = [];
     post.pid = pid.toString();
+
+    // Guarda el post en el mapa global
     posts.set(post.pid, post);
-    let user = getUser(post.id);
+    
+    const user = getUser(post.id);
     if (user) {
-        user.posts.push(post); 
+        if (!user.posts) {
+            user.posts = [];
+        }
+
+        // Verifica si ya existe el post en la lista del usuario antes de añadirlo
+        const existingIndex = user.posts.findIndex(p => p.pid === post.pid);
+        if (existingIndex === -1) {
+            user.posts.push(post); 
+        }
     }
-    return pid
+    
+    return pid;
 }
+
 
 export function getUserPosts(id) {
     return getUser(id).posts; 
 }
 
-export function deletePost(pid){
+export function deletePost(pid) {
+    if (!posts.has(pid)) {
+        return false; 
+    }
+
+    const post = posts.get(pid);
     posts.delete(pid);
+
+    const user = getUser(post.id);
+    if (user && Array.isArray(user.posts)) {
+        const postIndex = user.posts.findIndex(p => p.pid === pid);
+        if (postIndex !== -1) {
+            user.posts.splice(postIndex, 1);
+        }
+    }
+
+    return true; 
 }
+
+
 
 export function getPosts(){
     return [...posts.values()];
@@ -72,20 +148,49 @@ export function addComment(pid, comment) {
     post.comments.push(comment);   
 }
 
+
+
+
 ///////estudiantes
-export function addPoste(poste) {
-    let pid = postId_e++;
+export function addPoste(poste,pid) {
+
+    if (!pid) {
+        pid = postId_e++;
+    }
     poste.pid = pid.toString();
     posts_e.set(poste.pid, poste);
     let user = getUser(poste.id);
     if (user) {
-        user.posts.push(poste); 
+        if (!user.posts) {
+            user.posts = [];
+        }
+
+        // Verifica si ya existe el post en la lista del usuario antes de añadirlo
+        const existingIndex = user.posts.findIndex(p => p.pid === poste.pid);
+        if (existingIndex === -1) {
+            user.posts.push(poste); 
+        }
     }
     return pid
 }
 
 export function deletePoste(pid){
+    if (!posts_e.has(pid)) {
+        return false; 
+    }
+
+    const post = posts_e.get(pid);
     posts_e.delete(pid);
+
+    const user = getUser(post.id);
+    if (user && Array.isArray(user.posts)) {
+        const postIndex = user.posts.findIndex(p => p.pid === pid);
+        if (postIndex !== -1) {
+            user.posts.splice(postIndex, 1); 
+        }
+    }
+
+    return true; 
 }
 
 export function getPostse(){
@@ -203,3 +308,51 @@ addPoste({
     languages: "Español (nativo), Inglés (avanzado)",
     title: "Gestora de Recursos Humanos"
 });
+
+
+
+export function editPoste(pid, updatedPost) {
+    
+    if (!posts_e.has(pid)) {
+        console.log('Post no encontrado para editar');
+        return false;
+    }
+
+   
+    const originalPost = posts_e.get(pid);
+
+    deletePoste(pid);
+
+    updatedPost.pid = pid;
+
+    updatedPost.id = originalPost.id;
+
+    addPoste(updatedPost, pid);
+
+    return true; 
+}
+
+export function editPost(pid, updatedPost) {
+    
+    if (!posts.has(pid)) {
+        console.log('Post no encontrado para editar');
+        return false;
+    }
+
+   
+    const originalPost = posts.get(pid);
+
+   
+    deletePost(pid);
+
+    
+    updatedPost.pid = pid;
+
+   
+    updatedPost.id = originalPost.id;
+
+   
+    addPost(updatedPost, pid);
+
+    return true; 
+}

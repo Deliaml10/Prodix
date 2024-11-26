@@ -21,11 +21,49 @@
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="/assets/css/style.css">
 
+		
+	<!-- Carga AOS antes de script.js -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+	<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+	<!-- jQuery -->
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+	<script src="\assets\js\jquery-3.7.1.min.js"></script>
+	<script src="\assets\js\script.js"></script>
+
 		<style>
 			.whitespace-pre-line {
 				white-space: pre-line;
 			}
 		</style>
+
+		
+<script>
+	window.onload = function () {
+
+
+		const saludo = document.getElementById('saludo2');
+		const type = document.getElementById('type2');
+
+		const nombre = document.getElementById('username2');
+
+		const id = '{{id}}';
+		const utype = '{{type}}';
+		const username = '{{username}}'
+
+		saludo.style.display = 'none';
+		type.style.display = 'none';
+		nombre.style.display = 'none';
+		if (id !== 'null' && id !== '') {
+			saludo.style.display = 'block';
+			type.style.display = 'block';
+			type.innerText = utype;
+			nombre.style.display = 'block';
+			nombre.innerText = username;
+		}
+
+	}
+</script>
 	</head>
 	<body>
 
@@ -62,19 +100,42 @@
 										<a class="" href="/{{id}}">Inicio</a>
 									</li>
 									<li class="has-submenu active">
-										<a class="" href="/course-grid/{{id}}">Cursos</a>
+										<a class="" href="/course-grid-e/{{id}}">Estudiantes</a>
 									</li>
-									
-									<li class="has-submenu">
-										<a href="">Estudiante<i class="fas fa-chevron-down"></i></a>
-										<ul class="submenu first-submenu">
-											<li><a href="/user/{{id}}">Mi Perfil</a></li>
-											<li><a href="/history/{{id}}">Mis Cursos</a></li>
-											
-										</ul>
-									</li>
+								
 									<li class="has-submenu">
 										<a href="/faq/{{id}}">FAQ</a>
+									</li>
+									<li class="has-submenu" id="saludo2">
+										<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+											<span class="user-img">
+												<img src="{{foto}}" alt="">
+												<span class="status online"></span>
+											</span>
+										</a>
+										<ul class="submenu first-submenu">
+											<div data-popper-placement="bottom-end">
+												<div class="user-header">
+													<div class="avatar avatar-sm">
+														<img src="{{foto}}" alt="User Image"
+															class="avatar-img rounded-circle">
+													</div>
+													<div class="user-text">
+														<h6 id="username2"></h6>
+														<p class="text-muted mb-0" id="type2"></p>
+													</div>
+												</div>
+												<a class="dropdown-item" href="/user/{{id}}"><i
+														class="feather-user me-1"></i> Perfil</a>
+	
+												<a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i>
+													Cerrar
+													Sesión</a>
+												<a class="dropdown-item" href="/history/{{id}}"><i
+														class="feather-book me-1"></i> Historial</a>
+											</div>
+	
+										</ul>
 									</li>
 								</ul>
 							</div>
@@ -99,7 +160,7 @@
 
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item"><a href="/{{id}}">Inicio</a></li>
-										<li class="breadcrumb-item"><a href="/course-grid/{{id}}">Buscar cursos</a></li>
+										<li class="breadcrumb-item"><a href="/course-grid-e/{{id}}">Buscar estudiantes</a></li>
 										<li class="breadcrumb-item" aria-current="page" style="margin-right: 200px">{{post.full_name}}</li>
 									</ol>
 
@@ -123,16 +184,7 @@
 							</div>
 							<h2>{{post.full_name}}</h2>
 							<p>{{post.email}}</p>
-							<div class="about-instructor align-items-center">								
-								<div class="rating mb-0">							
-									<i class="fas fa-star filled"></i>
-									<i class="fas fa-star filled"></i>
-									<i class="fas fa-star filled"></i>
-									<i class="fas fa-star filled"></i>
-									<i class="fas fa-star"></i>
-									<span class="d-inline-block average-rating"><span>4.5</span> (15)</span>
-								</div>
-							</div>				
+									
 						</div>
 					</div>
 				</div>
@@ -209,7 +261,7 @@
 								<div class="card feature-sec">
 									<div class="card-body">
 										<div class="cat-title">
-											<h4>Acerca del curso</h4>
+											<h4>Acerca del estudiante</h4>
 										</div>
 										<ul>
 											<li><img src="/assets/img/icon/users.svg" class="me-2" alt=""> Correo: <span>{{post.email}}</span></li>
@@ -315,9 +367,6 @@
 		   
 		</div>
 	   <!-- /Main Wrapper -->
-	  
-		<!-- jQuery -->
-		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/js/jquery-3.7.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
 		<script src="/assets/js/bootstrap.bundle.min.js"></script>

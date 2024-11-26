@@ -28,6 +28,35 @@
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="../assets/css/style.css">
 	
+
+	
+	<script>
+		window.onload = function () {
+
+			
+			const saludo = document.getElementById('saludo');
+			const type=document.getElementById('type');
+			
+			const nombre=document.getElementById('username');
+
+			const username = '{{username}}';
+			const utype = '{{type}}';
+
+			if (username !== 'null' && username !== '') {
+				saludo.style.display = 'block';
+				type.style.display = 'block';
+				type.innerText=utype;
+				nombre.style.display='block';
+				nombre.innerText = username;
+			} else {
+				saludo.style.display = 'none';
+
+				type.style.display = 'block';
+				nombre.style.display='none';
+				
+			}
+		}
+	</script>
 </head>
 <body>
 
@@ -79,6 +108,35 @@
 							<li class="has-submenu">
 								<a href="/faq/{{id}}">FAQ</a>
 							</li>
+							<li class="has-submenu" id="saludo">
+								<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+									<span class="user-img">
+										<img src="{{foto}}" alt="">
+										<span class="status online"></span>
+									</span>
+								</a>
+								<ul class="submenu first-submenu">
+									<div  data-popper-placement="bottom-end">
+										<div class="user-header">
+											<div class="avatar avatar-sm">
+												<img src="{{foto}}" alt="User Image"
+													class="avatar-img rounded-circle">
+											</div>
+											<div class="user-text">
+												<h6 id="username"></h6>
+												<p class="text-muted mb-0" id="type" ></p>
+											</div>
+										</div>
+										<a class="dropdown-item" href="/user/{{id}}"><i
+												class="feather-user me-1"></i> Perfil</a>
+
+										<a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i> Cerrar
+											Sesión</a>
+										<a class="dropdown-item" href="/history/{{id}}"><i class="feather-book me-1"></i> Historial</a>
+									</div>
+
+								</ul>
+							</li>
 						</ul>
 					</div>
 
@@ -118,7 +176,7 @@
 								</ul>
 							</div>
 							<div class="widget-content multistep-form">
-								<form method="POST" action="/add-course-e/{{id}}">
+								<form method="POST" action="/add-course-e/{{id}}" id="courseForm">
 									<!-- Información Básica -->
 									<fieldset id="first">
 										<div class="add-course-info">
@@ -128,27 +186,27 @@
 											<div class="add-course-form">
 												<div class="input-block">
 													<label class="add-course-label">Nombre Completo</label>
-													<input name="full_name" type="text" class="form-control" placeholder="Nombre completo">
+													<input name="full_name" type="text" class="form-control" placeholder="Nombre completo" >
 												</div>
 												<div class="input-block">
 													<label class="add-course-label">Correo Electrónico</label>
-													<input name="email" type="text" class="form-control" placeholder="Correo electrónico">
+													<input name="email" type="text" class="form-control" placeholder="Correo electrónico" >
 												</div>
 												<div class="input-block">
 													<label class="add-course-label">Teléfono</label>
-													<input name="phone" type="text" class="form-control" placeholder="Teléfono">
+													<input name="phone" type="text" class="form-control" placeholder="Teléfono" >
 												</div>
 												<div class="input-block">
 													<label class="add-course-label">Ubicación</label>
-													<input name="location" type="text" class="form-control" placeholder="Ubicación">
+													<input name="location" type="text" class="form-control" placeholder="Ubicación" >
 												</div>
 												<div class="input-block">
 													<label class="add-course-label">Titulo</label>
-													<input name="title" type="text" class="form-control" placeholder="Titulo">
+													<input name="title" type="text" class="form-control" placeholder="Titulo" >
 												</div>
 												<div class="input-block">
 													<label class="add-course-label">Foto de Perfil (URL)</label>
-													<input name="profile_picture_url" type="text" class="form-control" placeholder="Ingresa la URL de la foto de perfil"  title="Debe ser una URL válida, comenzando con http:// o https://">
+													<input name="profile_picture_url" type="text" class="form-control" placeholder="Ingresa la URL de la foto de perfil"  title="Debe ser una URL válida, comenzando con https://" >
 												</div>
 											</div>
 											<div class="widget-btn">
@@ -202,6 +260,7 @@
 										</div>
 									</fieldset>
 								</form>
+						
 							</div>
 						</div>
 						<!-- /Profile Creation Wizard -->

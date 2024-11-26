@@ -77,6 +77,56 @@
 							<button type="button" class="btn btn-primary" >
 							<a href="/{{user.id}} " class="white-text" >Volver al inicio</a>
 						</button>
+						
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal" id="editProfileButton">
+	Editar Perfil
+  </button>
+  <!-- Modal para editar perfil -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 1200px;">
+	  <!-- Ancho más amplio -->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  <form role="form" action="/update-profile/{{id}}" method="post" class="w-100">
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Nombre completo</label>
+			  <input type="text" class="form-control" placeholder="Introduce tu nombre completo" id="editName" name="name" required minlength="3" maxlength="20" value="{{name}}">
+			</div>
+			<input type="hidden" name="email" value="{{email}}">
+			<input type="hidden" name="password" value="{{password}}">
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Foto de contacto</label>
+			  <input type="url" class="form-control" placeholder="Introduce tu foto de contacto" id="editFoto" name="foto" required pattern="https://.*" value="{{foto}}">
+			</div>
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Ubicación</label>
+			  <input type="text" class="form-control" placeholder="Introduce tu lugar de hospedaje" id="editUbicacion" name="ubicación" required minlength="3" maxlength="20" value="{{ubicación}}">
+			</div>
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Fecha de nacimiento</label>
+			  <input type="date" class="form-control" placeholder="Introduce tu fecha de nacimiento" id="editNacimiento" name="nacimiento" required min="1920-01-01" max="2024-01-01" value="{{nacimiento}}">
+			</div>
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Estudios</label>
+			  <input type="text" class="form-control" placeholder="Introduce tu historial de estudios" id="editEstudios" name="estudios" required minlength="2" maxlength="20" value="{{estudios}}">
+			</div>
+			<div class="input-block mb-4">
+			  <label class="form-control-label">Trabajos previos</label>
+			  <input type="text" class="form-control" placeholder="Introduce tu historial de trabajos" id="editTrabajos" name="trabajos" required minlength="2" maxlength="150" value="{{trabajos}}">
+			</div>
+			<input type="hidden" name="userType" value="{{userType}}">
+			<button class="btn btn-primary btn-start btn-sm" type="submit" value="Save">Guardar Cambios</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  
 						<button type="button" class="btn btn-primary" >
 							<a href="/delete/{{user.id}} " class="white-text" >Eliminar cuenta</a>
 						</button>
