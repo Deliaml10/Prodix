@@ -9,8 +9,8 @@ function validateUser(id) {
 }
 
 router.get('/', (req, res) => {
-    let posts = service.getPostsM();
-    let posts_e = service.getPostsM_e();
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
     res.render('index', { username:null, id:null,foto:null,type:null,  posts , posts_e });
 });
 
@@ -69,24 +69,6 @@ router.get('/course-details-e/:pid/:id?', (req, res) => {
     }
 });
 
-router.get('/course-details-eM/:pid/:id?', (req, res) => {
-    
-    const id = req.params.id || null; 
-
-    const pid = req.params.pid;
-
-    let post = service.getPostM_e(pid);
-
-    
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        res.render('course-details-e', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
-
-    res.render('course-details-e', { id, post });
-    }
-});
-
 
 
 router.get('/course-details/:pid/:id?', (req, res) => {
@@ -104,47 +86,6 @@ router.get('/course-details/:pid/:id?', (req, res) => {
 
     res.render('course-details', { id, post });
     }
-});
-
-router.get('/course-detailsM/:pid/:id?', (req, res) => {
-    
-    const id = req.params.id || null; 
-
-    const pid = req.params.pid;
-
-    let post = service.getPostM(pid);
-    
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        res.render('course-details-M', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
-
-    res.render('course-details-M', { id, post });
-    }
-});
-
-router.post('/course-detailsM/:pid/:id?', (req, res) => {
-    let { cname, asunto, comment } = req.body;
-    const pid = req.params.pid;
-    const id = req.params.id || null;
-
-    let post = service.getPostM(pid);
-    
-
-    cname = cname.toLowerCase();
-    cname = cname.charAt(0).toUpperCase() + cname.slice(1);
-    asunto = asunto.charAt(0).toUpperCase() + asunto.slice(1);
-
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        service.addCommentM(pid, { cname:user.name, asunto, comment, foto:user.foto});
-        res.render('course-details-M', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
-    service.addCommentM(pid, { cname, asunto, comment, foto:'/assets/img/user/3686930.png' });
-    res.render('course-details-M', { id, post });
-    }
-
-    
 });
 
 router.post('/course-details/:pid/:id?', (req, res) => {

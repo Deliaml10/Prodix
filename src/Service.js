@@ -74,41 +74,6 @@ export function editUser(id, updatedData){
 
 }
 
-//
-const mainPost = new Map();
-let Mid = 0;
-export function addPostM(post) {
-    let pid = Mid++;
-    post.comments = [];
-    post.pid = pid.toString();
-    mainPost.set(post.pid, post);
-    return pid
-}
-export function getPostsM(){
-    return [...mainPost.values()];
-}
-
-export function getPostM(pid){
-    return mainPost.get(pid);
-}
-
-const mainEst = new Map();
-let Mid_e = 0;
-export function addPostM_e(post) {
-    let pid = Mid_e++;
-    post.pid = pid.toString();
-    mainEst.set(post.pid, post);
-    return pid
-}
-
-export function getPostsM_e(){
-    return [...mainEst.values()];
-}
-
-export function getPostM_e(pid){
-    return mainEst.get(pid);
-}
-
 
 //POSTS
 const posts = new Map();
@@ -182,11 +147,6 @@ export function addComment(pid, comment) {
     post.comments.push(comment);   
 }
 
-export function addCommentM(pid, comment) {
-    let post = getPostM(pid);
-    post.comments.push(comment);   
-}
-
 
 
 ///////estudiantes
@@ -239,32 +199,62 @@ export function getPoste(pid){
     return posts_e.get(pid);
 }
 
+
+
 addPost({
-    company_name: "DevSolutions",
-    job_title: "Desarrollador de Software Junior",
-    job_subtitle: "Únete a nuestro equipo y ayuda a construir soluciones innovadoras",
-    job_description: "Estamos buscando un Desarrollador Junior para unirse a nuestro equipo de desarrollo. El candidato ideal debe tener conocimientos básicos en lenguajes de programación y estar dispuesto a aprender tecnologías nuevas.",
-    salary: 45000.00,
-    job_category: "Desarrollador de Software",
-    job_requirements: "Conocimientos en JavaScript, HTML, CSS. Deseable experiencia en frameworks como React o Angular.",
-    location: "Remoto",
+    company_name: "FinTech Vision",
+    job_title: "Especialista en Seguridad Informática",
+    job_subtitle: "Protege nuestros sistemas financieros y la información de los clientes",
+    job_description: "Estamos buscando un Especialista en Seguridad Informática para desarrollar y mantener estrategias que aseguren la integridad y confidencialidad de nuestros sistemas.",
+    salary: 85000.00,
+    job_category: "Seguridad Informática",
+    job_requirements: "Conocimientos avanzados en ciberseguridad, criptografía, y detección de vulnerabilidades. Certificaciones como CISSP o CEH son un plus.",
+    location: "Híbrido - Madrid",
     job_duration: "Tiempo Completo",
     posting_date: "2024-11-11",
-    image_url: "https://oregoom.com/wp-content/uploads/2024/04/etiqueta-img-en-html.webp"
+    image_url: "https://www.grupocibernos.com/hubfs/expertos-ciberseguridad.jpg"
 });
 
 addPost({
-    company_name: "TechInnovate",
-    job_title: "Ingeniero de Datos",
-    job_subtitle: "Impulsa la toma de decisiones mediante datos precisos y procesables",
-    job_description: "Estamos en busca de un Ingeniero de Datos para diseñar, construir y mantener canalizaciones de datos que permitan a nuestros analistas y científicos de datos acceder a información de calidad. Experiencia en SQL, Python y Spark es deseable.",
-    salary: 65000.00,
-    job_category: "Ingeniería de Datos",
-    job_requirements: "Conocimientos en SQL, Python, ETL y herramientas de big data. Experiencia con bases de datos como MySQL o PostgreSQL.",
-    location: "Híbrido - Ciudad de México",
+    company_name: "QuantumTech",
+    job_title: "Ingeniero de Software para IoT",
+    job_subtitle: "Desarrolla soluciones innovadoras para dispositivos conectados",
+    job_description: "Estamos en busca de un Ingeniero de Software especializado en IoT para diseñar y programar sistemas que integren dispositivos inteligentes y aplicaciones.",
+    salary: 88000.00,
+    job_category: "Internet de las Cosas",
+    job_requirements: "Experiencia en C/C++, Python y protocolos IoT (MQTT, CoAP). Conocimiento en desarrollo de firmware es deseable.",
+    location: "Híbrido - Berlín",
     job_duration: "Tiempo Completo",
     posting_date: "2024-11-11",
-    image_url: "https://media.licdn.com/dms/image/v2/C4E12AQFLBrRef2OcwQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1568670195970?e=2147483647&v=beta&t=JtgKexab0CQSXUnQm38hwV8dOO0Fy8o-Jo0bmg227DA"
+    image_url: "https://www.cloudblue.com/wp-content/uploads/2024/06/what-is-the-internet-of-things-iot.png"
+});
+
+addPost({
+    company_name: "Robotics Inc.",
+    job_title: "Ingeniero en Robótica",
+    job_subtitle: "Diseña e implementa soluciones robóticas innovadoras",
+    job_description: "Únete a nuestro equipo para desarrollar sistemas robóticos avanzados que combinen hardware y software de manera eficiente.",
+    salary: 93000.00,
+    job_category: "Robótica",
+    job_requirements: "Conocimientos en ROS, Python, y diseño mecánico. Experiencia en visión por computadora es una ventaja.",
+    location: "Presencial - Tokio",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://www.santanderopenacademy.com/es/blog/robotica-colaborativa/_jcr_content/root/hero/imageDesktopLG.coreimg.jpeg/1712566730587/robotica-colaborativa-1.jpeg"
+});
+
+addPost({
+    company_name: "Cloudify Solutions",
+    job_title: "Ingeniero DevOps",
+    job_subtitle: "Optimiza y automatiza la infraestructura de nuestros servicios en la nube",
+    job_description: "Buscamos un Ingeniero DevOps para implementar prácticas de integración y entrega continua, asegurando el rendimiento y la escalabilidad de nuestros sistemas.",
+    salary: 90000.00,
+    job_category: "DevOps",
+    job_requirements: "Experiencia en AWS, Docker, Kubernetes y herramientas CI/CD como Jenkins o GitLab. Conocimientos en scripting (Python, Bash) son esenciales.",
+    location: "Remoto",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://www.strongdm.com/hubfs/devops-security.png"
 });
 
 addPost({
@@ -282,6 +272,21 @@ addPost({
 });
 
 addPost({
+    company_name: "DevSolutions",
+    job_title: "Desarrollador de Software Junior",
+    job_subtitle: "Únete a nuestro equipo y ayuda a construir soluciones innovadoras",
+    job_description: "Estamos buscando un Desarrollador Junior para unirse a nuestro equipo de desarrollo. El candidato ideal debe tener conocimientos básicos en lenguajes de programación y estar dispuesto a aprender tecnologías nuevas.",
+    salary: 45000.00,
+    job_category: "Desarrollador de Software",
+    job_requirements: "Conocimientos en JavaScript, HTML, CSS. Deseable experiencia en frameworks como React o Angular.",
+    location: "Remoto",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://oregoom.com/wp-content/uploads/2024/04/etiqueta-img-en-html.webp"
+});
+
+
+addPost({
     company_name: "HealthTech Labs",
     job_title: "Desarrollador Full Stack",
     job_subtitle: "Desarrolla aplicaciones innovadoras en el sector de salud",
@@ -295,6 +300,51 @@ addPost({
     image_url: "https://d2ms8rpfqc4h24.cloudfront.net/Guide_to_Full_Stack_Development_000eb0b2d0.jpg"
 });
 
+
+addPost({
+    company_name: "AI NextGen",
+    job_title: "Especialista en Machine Learning",
+    job_subtitle: "Desarrolla modelos de aprendizaje automático que impulsen la innovación",
+    job_description: "Únete a nuestro equipo como Especialista en Machine Learning para diseñar y entrenar modelos que resuelvan problemas complejos en diferentes industrias.",
+    salary: 95000.00,
+    job_category: "Inteligencia Artificial",
+    job_requirements: "Experiencia con Python, TensorFlow, PyTorch y bibliotecas de machine learning. Conocimientos en procesamiento de datos y algoritmos de optimización.",
+    location: "Híbrido - San Francisco",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://designindc.com/wp-content/uploads/2022/12/Machine-Learning.jpg"
+});
+
+addPost({
+    company_name: "EduTech Global",
+    job_title: "Diseñador de UX/UI",
+    job_subtitle: "Crea experiencias de usuario intuitivas y atractivas para la educación",
+    job_description: "Buscamos un Diseñador de UX/UI que colabore con nuestro equipo para desarrollar interfaces educativas innovadoras que sean fáciles de usar y visualmente impactantes.",
+    salary: 65000.00,
+    job_category: "Diseño UX/UI",
+    job_requirements: "Dominio de herramientas de diseño como Figma, Sketch o Adobe XD. Conocimientos en pruebas de usabilidad y diseño centrado en el usuario.",
+    location: "Presencial - Barcelona",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://weareshifta.com/wp-content/uploads/diseno-ux-1.jpg"
+});
+
+addPost({
+    company_name: "TechInnovate",
+    job_title: "Ingeniero de Datos",
+    job_subtitle: "Impulsa la toma de decisiones mediante datos precisos y procesables",
+    job_description: "Estamos en busca de un Ingeniero de Datos para diseñar, construir y mantener canalizaciones de datos que permitan a nuestros analistas y científicos de datos acceder a información de calidad. Experiencia en SQL, Python y Spark es deseable.",
+    salary: 65000.00,
+    job_category: "Ingeniería de Datos",
+    job_requirements: "Conocimientos en SQL, Python, ETL y herramientas de big data. Experiencia con bases de datos como MySQL o PostgreSQL.",
+    location: "Híbrido - Ciudad de México",
+    job_duration: "Tiempo Completo",
+    posting_date: "2024-11-11",
+    image_url: "https://media.licdn.com/dms/image/v2/C4E12AQFLBrRef2OcwQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1568670195970?e=2147483647&v=beta&t=JtgKexab0CQSXUnQm38hwV8dOO0Fy8o-Jo0bmg227DA"
+});
+
+
+
 addPoste({
     full_name: "Juan Pérez",
     email: "juan.perez@example.com",
@@ -306,6 +356,21 @@ addPoste({
     skills: "JavaScript, React, HTML, CSS, Node.js, Git, Firebase, desarrollo ágil con Scrum",
     languages: "Español (nativo), Inglés (avanzado)",
     title: "Desarrollador de Software Junior"
+});
+
+
+
+addPoste({
+    full_name: "Pablo Moreno",
+    email: "pablo.moreno@example.com",
+    phone: "+34 620 678 123",
+    location: "Santander, España",
+    profile_picture_url: "https://img.freepik.com/premium-photo/portrait-smiling-young-male-office-employee-working-laptop_116547-25535.jpg",
+    education: "Licenciatura en Matemáticas, Universidad de Cantabria. Especialización en modelado matemático y simulación computacional.",
+    work_experience: "Modelador Matemático en SimuTech, 3 años de experiencia en desarrollo de modelos matemáticos aplicados a la industria energética.",
+    skills: "Modelado matemático, simulación, MATLAB, Python, optimización, análisis de sistemas",
+    languages: "Español (nativo), Inglés (intermedio)",
+    title: "Modelador Matemático"
 });
 
 addPoste({
@@ -322,6 +387,33 @@ addPoste({
 });
 
 addPoste({
+    full_name: "Laura Rodríguez",
+    email: "laura.rodriguez@example.com",
+    phone: "+34 635 456 789",
+    location: "Sevilla, España",
+    profile_picture_url: "https://media.istockphoto.com/id/1153955734/es/foto/feliz-sonriente-mujer-afroamericana-en-vestimenta-formal-de-negocios.jpg?s=612x612&w=0&k=20&c=E7KgYSC66cnqSL_mYFbwDgITrNrsZ-YX7muDPHVMPNc=",
+    education: "Licenciatura en Psicología, Universidad de Sevilla. Formación adicional en coaching organizacional y evaluación de competencias laborales.",
+    work_experience: "Gestora de Recursos Humanos en Recursos Humanos & Co., 4 años de experiencia en selección de personal, diseño de estrategias de bienestar y desarrollo organizacional.",
+    skills: "Selección de personal, Evaluación psicológica, Coaching, formación de equipos, gestión de conflictos, liderazgo y motivación de equipos",
+    languages: "Español (nativo), Inglés (avanzado)",
+    title: "Gestora de Recursos Humanos"
+});
+
+addPoste({
+    full_name: "Sofía Martínez",
+    email: "sofia.martinez@example.com",
+    phone: "+34 679 321 654",
+    location: "Granada, España",
+    profile_picture_url: "https://institutosantalucia.es/wp-content/uploads/2020/10/caracteristicas-de-las-mujeres-trabajadoras.jpg",
+    education: "Licenciatura en Ciencias de la Computación, Universidad de Granada. Especialización en inteligencia artificial y aprendizaje automático.",
+    work_experience: "Analista de Datos en DataLab Solutions, 2 años de experiencia en análisis predictivo y visualización de datos utilizando Python y Tableau.",
+    skills: "Python, R, SQL, Tableau, Power BI, aprendizaje automático, análisis estadístico",
+    languages: "Español (nativo), Inglés (intermedio)",
+    title: "Analista de Datos"
+});
+
+
+addPoste({
     full_name: "Carlos Fernández",
     email: "carlos.fernandez@example.com",
     phone: "+34 623 890 123",
@@ -334,18 +426,61 @@ addPoste({
     title: "Consultor de Marketing Digital"
 });
 
+
 addPoste({
-    full_name: "Laura Rodríguez",
-    email: "laura.rodriguez@example.com",
-    phone: "+34 635 456 789",
-    location: "Sevilla, España",
-    profile_picture_url: "https://media.istockphoto.com/id/1153955734/es/foto/feliz-sonriente-mujer-afroamericana-en-vestimenta-formal-de-negocios.jpg?s=612x612&w=0&k=20&c=E7KgYSC66cnqSL_mYFbwDgITrNrsZ-YX7muDPHVMPNc=",
-    education: "Licenciatura en Psicología, Universidad de Sevilla. Formación adicional en coaching organizacional y evaluación de competencias laborales.",
-    work_experience: "Gestora de Recursos Humanos en Recursos Humanos & Co., 4 años de experiencia en selección de personal, diseño de estrategias de bienestar y desarrollo organizacional.",
-    skills: "Selección de personal, Evaluación psicológica, Coaching, formación de equipos, gestión de conflictos, liderazgo y motivación de equipos",
-    languages: "Español (nativo), Inglés (avanzado)",
-    title: "Gestora de Recursos Humanos"
+    full_name: "Miguel López",
+    email: "miguel.lopez@example.com",
+    phone: "+34 654 789 012",
+    location: "Bilbao, España",
+    profile_picture_url: "https://img.freepik.com/fotos-premium/joven-trabajador-oficina-masculino-lugar-trabajo_1301-2824.jpg",
+    education: "Máster en Ingeniería Industrial, Universidad del País Vasco. Formación adicional en gestión de proyectos y diseño de procesos industriales.",
+    work_experience: "Ingeniero de Procesos en Industria Vasca, 3 años de experiencia en optimización de procesos de producción y diseño de líneas automatizadas.",
+    skills: "Lean Manufacturing, AutoCAD, SolidWorks, gestión de proyectos, Six Sigma, análisis de datos industriales",
+    languages: "Español (nativo), Inglés (básico)",
+    title: "Ingeniero de Procesos"
 });
+
+addPoste({
+    full_name: "Isabel Torres",
+    email: "isabel.torres@example.com",
+    phone: "+34 622 567 890",
+    location: "Málaga, España",
+    profile_picture_url: "https://img.freepik.com/foto-gratis/imagen-joven-trabajadora-asiatica-anteojos-sonriendo-sosteniendo-tableta-digital-pie-sobre-fondo-blanco_1258-89376.jpg",
+    education: "Licenciatura en Comunicación Audiovisual, Universidad de Málaga. Enfocada en producción de contenido digital y estrategias multimedia.",
+    work_experience: "Productora Multimedia en MediaHouse, 5 años de experiencia en producción audiovisual, edición de video y desarrollo de campañas digitales.",
+    skills: "Adobe Premiere, After Effects, Final Cut Pro, storytelling, diseño gráfico, estrategia de contenido digital",
+    languages: "Español (nativo), Inglés (avanzado)",
+    title: "Productora Multimedia"
+});
+
+addPoste({
+    full_name: "Raúl Sánchez",
+    email: "raul.sanchez@example.com",
+    phone: "+34 617 456 987",
+    location: "Zaragoza, España",
+    profile_picture_url: "https://img.freepik.com/foto-gratis/joven-practicas_23-2149315589.jpg",
+    education: "Grado en Ingeniería Electrónica, Universidad de Zaragoza. Especializado en sistemas embebidos y desarrollo de hardware.",
+    work_experience: "Ingeniero Electrónico en TechEmbed, 2 años de experiencia en diseño y prueba de circuitos electrónicos para dispositivos IoT.",
+    skills: "C/C++, diseño PCB, programación de microcontroladores, MATLAB, diseño de hardware",
+    languages: "Español (nativo), Inglés (intermedio)",
+    title: "Ingeniero Electrónico"
+});
+
+
+addPoste({
+    full_name: "Elena Gutiérrez",
+    email: "elena.gutierrez@example.com",
+    phone: "+34 610 234 678",
+    location: "Valladolid, España",
+    profile_picture_url: "https://img.freepik.com/fotos-premium/trabajadora-joven-sienta-oficina-casa-leyendo-documento-papel-o-contrato-freelancer-hermosa-mujer-que-toma-nota-informacion-planificacion-proyecto-haciendo-trabajo-remoto-traves-computadora-portatil_1212-3819.jpg",
+    education: "Máster en Biotecnología, Universidad de Valladolid. Con experiencia en investigación y desarrollo de productos biotecnológicos.",
+    work_experience: "Investigadora en BioTech Labs, 4 años de experiencia en análisis de datos biológicos, desarrollo de pruebas clínicas y biología molecular.",
+    skills: "Biología molecular, análisis genético, desarrollo de ensayos clínicos, R&D, Python para biología",
+    languages: "Español (nativo), Inglés (básico)",
+    title: "Investigadora en Biotecnología"
+});
+
+
 
 
 
@@ -395,165 +530,4 @@ export function editPost(pid, updatedPost) {
     return true; 
 }
 
-// posts en main
-addPostM({
-    company_name: "FinTech Vision",
-    job_title: "Especialista en Seguridad Informática",
-    job_subtitle: "Protege nuestros sistemas financieros y la información de los clientes",
-    job_description: "Estamos buscando un Especialista en Seguridad Informática para desarrollar y mantener estrategias que aseguren la integridad y confidencialidad de nuestros sistemas.",
-    salary: 85000.00,
-    job_category: "Seguridad Informática",
-    job_requirements: "Conocimientos avanzados en ciberseguridad, criptografía, y detección de vulnerabilidades. Certificaciones como CISSP o CEH son un plus.",
-    location: "Híbrido - Madrid",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://www.grupocibernos.com/hubfs/expertos-ciberseguridad.jpg"
-});
 
-addPostM({
-    company_name: "Cloudify Solutions",
-    job_title: "Ingeniero DevOps",
-    job_subtitle: "Optimiza y automatiza la infraestructura de nuestros servicios en la nube",
-    job_description: "Buscamos un Ingeniero DevOps para implementar prácticas de integración y entrega continua, asegurando el rendimiento y la escalabilidad de nuestros sistemas.",
-    salary: 90000.00,
-    job_category: "DevOps",
-    job_requirements: "Experiencia en AWS, Docker, Kubernetes y herramientas CI/CD como Jenkins o GitLab. Conocimientos en scripting (Python, Bash) son esenciales.",
-    location: "Remoto",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://www.strongdm.com/hubfs/devops-security.png"
-});
-
-addPostM({
-    company_name: "AI NextGen",
-    job_title: "Especialista en Machine Learning",
-    job_subtitle: "Desarrolla modelos de aprendizaje automático que impulsen la innovación",
-    job_description: "Únete a nuestro equipo como Especialista en Machine Learning para diseñar y entrenar modelos que resuelvan problemas complejos en diferentes industrias.",
-    salary: 95000.00,
-    job_category: "Inteligencia Artificial",
-    job_requirements: "Experiencia con Python, TensorFlow, PyTorch y bibliotecas de machine learning. Conocimientos en procesamiento de datos y algoritmos de optimización.",
-    location: "Híbrido - San Francisco",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://designindc.com/wp-content/uploads/2022/12/Machine-Learning.jpg"
-});
-
-addPostM({
-    company_name: "EduTech Global",
-    job_title: "Diseñador de UX/UI",
-    job_subtitle: "Crea experiencias de usuario intuitivas y atractivas para la educación",
-    job_description: "Buscamos un Diseñador de UX/UI que colabore con nuestro equipo para desarrollar interfaces educativas innovadoras que sean fáciles de usar y visualmente impactantes.",
-    salary: 65000.00,
-    job_category: "Diseño UX/UI",
-    job_requirements: "Dominio de herramientas de diseño como Figma, Sketch o Adobe XD. Conocimientos en pruebas de usabilidad y diseño centrado en el usuario.",
-    location: "Presencial - Barcelona",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://weareshifta.com/wp-content/uploads/diseno-ux-1.jpg"
-});
-
-addPostM({
-    company_name: "QuantumTech",
-    job_title: "Ingeniero de Software para IoT",
-    job_subtitle: "Desarrolla soluciones innovadoras para dispositivos conectados",
-    job_description: "Estamos en busca de un Ingeniero de Software especializado en IoT para diseñar y programar sistemas que integren dispositivos inteligentes y aplicaciones.",
-    salary: 88000.00,
-    job_category: "Internet de las Cosas",
-    job_requirements: "Experiencia en C/C++, Python y protocolos IoT (MQTT, CoAP). Conocimiento en desarrollo de firmware es deseable.",
-    location: "Híbrido - Berlín",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://www.cloudblue.com/wp-content/uploads/2024/06/what-is-the-internet-of-things-iot.png"
-});
-
-addPostM({
-    company_name: "Robotics Inc.",
-    job_title: "Ingeniero en Robótica",
-    job_subtitle: "Diseña e implementa soluciones robóticas innovadoras",
-    job_description: "Únete a nuestro equipo para desarrollar sistemas robóticos avanzados que combinen hardware y software de manera eficiente.",
-    salary: 93000.00,
-    job_category: "Robótica",
-    job_requirements: "Conocimientos en ROS, Python, y diseño mecánico. Experiencia en visión por computadora es una ventaja.",
-    location: "Presencial - Tokio",
-    job_duration: "Tiempo Completo",
-    posting_date: "2024-11-11",
-    image_url: "https://www.santanderopenacademy.com/es/blog/robotica-colaborativa/_jcr_content/root/hero/imageDesktopLG.coreimg.jpeg/1712566730587/robotica-colaborativa-1.jpeg"
-});
-
-addPostM_e({
-    full_name: "Sofía Martínez",
-    email: "sofia.martinez@example.com",
-    phone: "+34 679 321 654",
-    location: "Granada, España",
-    profile_picture_url: "https://institutosantalucia.es/wp-content/uploads/2020/10/caracteristicas-de-las-mujeres-trabajadoras.jpg",
-    education: "Licenciatura en Ciencias de la Computación, Universidad de Granada. Especialización en inteligencia artificial y aprendizaje automático.",
-    work_experience: "Analista de Datos en DataLab Solutions, 2 años de experiencia en análisis predictivo y visualización de datos utilizando Python y Tableau.",
-    skills: "Python, R, SQL, Tableau, Power BI, aprendizaje automático, análisis estadístico",
-    languages: "Español (nativo), Inglés (intermedio)",
-    title: "Analista de Datos"
-});
-
-addPostM_e({
-    full_name: "Miguel López",
-    email: "miguel.lopez@example.com",
-    phone: "+34 654 789 012",
-    location: "Bilbao, España",
-    profile_picture_url: "https://img.freepik.com/fotos-premium/joven-trabajador-oficina-masculino-lugar-trabajo_1301-2824.jpg",
-    education: "Máster en Ingeniería Industrial, Universidad del País Vasco. Formación adicional en gestión de proyectos y diseño de procesos industriales.",
-    work_experience: "Ingeniero de Procesos en Industria Vasca, 3 años de experiencia en optimización de procesos de producción y diseño de líneas automatizadas.",
-    skills: "Lean Manufacturing, AutoCAD, SolidWorks, gestión de proyectos, Six Sigma, análisis de datos industriales",
-    languages: "Español (nativo), Inglés (básico)",
-    title: "Ingeniero de Procesos"
-});
-
-addPostM_e({
-    full_name: "Isabel Torres",
-    email: "isabel.torres@example.com",
-    phone: "+34 622 567 890",
-    location: "Málaga, España",
-    profile_picture_url: "https://img.freepik.com/foto-gratis/imagen-joven-trabajadora-asiatica-anteojos-sonriendo-sosteniendo-tableta-digital-pie-sobre-fondo-blanco_1258-89376.jpg",
-    education: "Licenciatura en Comunicación Audiovisual, Universidad de Málaga. Enfocada en producción de contenido digital y estrategias multimedia.",
-    work_experience: "Productora Multimedia en MediaHouse, 5 años de experiencia en producción audiovisual, edición de video y desarrollo de campañas digitales.",
-    skills: "Adobe Premiere, After Effects, Final Cut Pro, storytelling, diseño gráfico, estrategia de contenido digital",
-    languages: "Español (nativo), Inglés (avanzado)",
-    title: "Productora Multimedia"
-});
-
-addPostM_e({
-    full_name: "Raúl Sánchez",
-    email: "raul.sanchez@example.com",
-    phone: "+34 617 456 987",
-    location: "Zaragoza, España",
-    profile_picture_url: "https://img.freepik.com/foto-gratis/joven-practicas_23-2149315589.jpg",
-    education: "Grado en Ingeniería Electrónica, Universidad de Zaragoza. Especializado en sistemas embebidos y desarrollo de hardware.",
-    work_experience: "Ingeniero Electrónico en TechEmbed, 2 años de experiencia en diseño y prueba de circuitos electrónicos para dispositivos IoT.",
-    skills: "C/C++, diseño PCB, programación de microcontroladores, MATLAB, diseño de hardware",
-    languages: "Español (nativo), Inglés (intermedio)",
-    title: "Ingeniero Electrónico"
-});
-
-addPostM_e({
-    full_name: "Elena Gutiérrez",
-    email: "elena.gutierrez@example.com",
-    phone: "+34 610 234 678",
-    location: "Valladolid, España",
-    profile_picture_url: "https://img.freepik.com/fotos-premium/trabajadora-joven-sienta-oficina-casa-leyendo-documento-papel-o-contrato-freelancer-hermosa-mujer-que-toma-nota-informacion-planificacion-proyecto-haciendo-trabajo-remoto-traves-computadora-portatil_1212-3819.jpg",
-    education: "Máster en Biotecnología, Universidad de Valladolid. Con experiencia en investigación y desarrollo de productos biotecnológicos.",
-    work_experience: "Investigadora en BioTech Labs, 4 años de experiencia en análisis de datos biológicos, desarrollo de pruebas clínicas y biología molecular.",
-    skills: "Biología molecular, análisis genético, desarrollo de ensayos clínicos, R&D, Python para biología",
-    languages: "Español (nativo), Inglés (básico)",
-    title: "Investigadora en Biotecnología"
-});
-
-addPostM_e({
-    full_name: "Pablo Moreno",
-    email: "pablo.moreno@example.com",
-    phone: "+34 620 678 123",
-    location: "Santander, España",
-    profile_picture_url: "https://img.freepik.com/premium-photo/portrait-smiling-young-male-office-employee-working-laptop_116547-25535.jpg",
-    education: "Licenciatura en Matemáticas, Universidad de Cantabria. Especialización en modelado matemático y simulación computacional.",
-    work_experience: "Modelador Matemático en SimuTech, 3 años de experiencia en desarrollo de modelos matemáticos aplicados a la industria energética.",
-    skills: "Modelado matemático, simulación, MATLAB, Python, optimización, análisis de sistemas",
-    languages: "Español (nativo), Inglés (intermedio)",
-    title: "Modelador Matemático"
-});
