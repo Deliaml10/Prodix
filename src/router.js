@@ -129,7 +129,6 @@ router.post('/course-detailsM/:pid/:id?', (req, res) => {
     const id = req.params.id || null;
 
     let post = service.getPostM(pid);
-    console.log(post);
     
 
     cname = cname.toLowerCase();
