@@ -76,8 +76,9 @@ export function editUser(id, updatedData){
 
 //
 const mainPost = new Map();
+let Mid = 0;
 export function addPostM(post) {
-    let pid = postId++;
+    let pid = Mid++;
     post.comments = [];
     post.pid = pid.toString();
     mainPost.set(post.pid, post);
@@ -92,8 +93,9 @@ export function getPostM(pid){
 }
 
 const mainEst = new Map();
+let Mid_e = 0;
 export function addPostM_e(post) {
-    let pid = postId_e++;
+    let pid = Mid_e++;
     post.pid = pid.toString();
     mainEst.set(post.pid, post);
     return pid
