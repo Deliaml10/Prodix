@@ -133,7 +133,10 @@ router.post('/add-course-e/:id', (req, res) => {
     let user=service.getUser(id);
     service.addPoste({ full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title, id });
 
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
 });
 
 //nuevo post empresa
@@ -151,8 +154,10 @@ router.post('/add-course/:id', (req, res) => {
     company_name = company_name.charAt(0).toUpperCase() + company_name.slice(1);
     let user=service.getUser(id);
     service.addPost({ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id },null);
-
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
+    
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
 });
 
 
@@ -169,14 +174,17 @@ router.get('/faq/:id?', (req, res) => {
 
 router.get('/:id', (req, res) => {
     let user=service.getUser(req.params.id)
-
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
 });
 
 router.get('/delete/:id', (req, res) => {
     service.deleteUser(req.params.id);
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
     res.render('index', { 
-        username:null, id:null ,foto:null,type:null
+        username:null, id:null ,foto:null,type:null, posts, posts_e
     });
 });
 
@@ -244,15 +252,17 @@ router.get('/faq/:id?', (req, res) => {
 
 router.get('/:id', (req, res) => {
     let user=service.getUser(req.params.id)
-
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
 });
 
 router.get('/delete/:id', (req, res) => {
-
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
     service.deleteUser(req.params.id);
     res.render('index', { 
-        username:null, id:null ,foto:null,type:null
+        username:null, id:null ,foto:null,type:null, posts, posts_e
     });
 });
 
@@ -297,20 +307,22 @@ router.post('/update-profile/:id', (req, res) => {
 
 router.post('/update-course-e/:id', (req, res) => {
    
-    
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
     let { pid,full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title } = req.body;
     let id=req.params.id
     full_name = full_name.charAt(0).toUpperCase() + full_name.slice(1);
     email = email.toLowerCase();
     service.editPoste(pid,{ full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title, id });
     let user = service.getUser(id);
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
  
  });
 
  
 router.post('/update-course/:id', (req, res) => {
-   
+    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
+    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
 
     let id=req.params.id
     let { pid,company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date } = req.body;
@@ -319,7 +331,7 @@ router.post('/update-course/:id', (req, res) => {
     service.editPost(pid,{ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id });
 
     let user = service.getUser(id);
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType}); 
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e}); 
  
  });
  
