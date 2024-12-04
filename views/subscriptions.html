@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Prodix</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="../image/x-icon" href="../assets/img/prodixIcon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="../assets/plugins/feather/feather.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="../assets/css/style.css">
+
+
+	<!-- Carga AOS antes de script.js -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+	<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+	<!-- jQuery -->
+	<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+	<script src="..\assets\js\jquery-3.7.1.min.js"></script>
+	<script src="..\assets\js\script.js"></script>
+
+
+	<script>
+		window.onload = function () {
+
+
+			const saludo = document.getElementById('saludo2');
+			const type = document.getElementById('type2');
+
+			const nombre = document.getElementById('username2');
+
+			const id = '{{id}}';
+			const utype = '{{type}}';
+			const username = '{{username}}'
+
+			saludo.style.display = 'none';
+			type.style.display = 'none';
+			nombre.style.display = 'none';
+			if (id !== 'null' && id !== '') {
+				saludo.style.display = 'block';
+				type.style.display = 'block';
+				type.innerText = utype;
+				nombre.style.display = 'block';
+				nombre.innerText = username;
+			}
+
+			const editButtons = document.querySelectorAll('.edit-button');
+
+			editButtons.forEach(button => {
+
+				const isTrue = button.getAttribute('data-is-true') === 'true';
+
+				if (isTrue && utype !== 'estudiante') {
+					button.style.display = 'block';
+				} else {
+					button.style.display = 'none';
+				}
+			});
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+		<!-- Header -->
+		<header class="header header-page">
+			<div class="header-fixed">
+				<nav class="navbar navbar-expand-lg header-nav scroll-sticky">
+					<div class="container header-border">
+						<div class="navbar-header">
+							<a id="mobile_btn" href="javascript:void(0);">
+								<span class="bar-icon">
+									<span></span>
+									<span></span>
+									<span></span>
+								</span>
+							</a>
+							<a href="/" class="navbar-brand logo">
+								<img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+							</a>
+						</div>
+						<div class="main-menu-wrapper">
+							<div class="menu-header">
+								<a href="/" class="menu-logo">
+									<img src="../assets/img/prodixLogo.png" class="img-fluid" alt="Logo">
+								</a>
+								<a id="menu_close" class="menu-close" href="javascript:void(0);">
+									<i class="fas fa-times"></i>
+								</a>
+							</div>
+							<ul class="main-nav">
+								<li class="has-submenu">
+									<a class="" href="/{{id}}">Inicio</a>
+								</li>
+								<li class="has-submenu active">
+									<a class="" href="/course-grid/{{id}}">Cursos</a>
+								</li>
+
+								
+								<li class="has-submenu">
+									<a href="/faq/{{id}}">FAQ</a>
+								</li>
+								<li class="has-submenu" id="saludo2">
+									<a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+										<span class="user-img">
+											<img src="{{foto}}" alt="">
+											<span class="status online"></span>
+										</span>
+									</a>
+									<ul class="submenu first-submenu">
+										<div data-popper-placement="bottom-end">
+											<div class="user-header">
+												<div class="avatar avatar-sm">
+													<img src="{{foto}}" alt="User Image"
+														class="avatar-img rounded-circle">
+												</div>
+												<div class="user-text">
+													<h6 id="username2"></h6>
+													<p class="text-muted mb-0" id="type2"></p>
+												</div>
+											</div>
+											<a class="dropdown-item" href="/user/{{id}}"><i
+													class="feather-user me-1"></i> Perfil</a>
+
+											<a class="dropdown-item" href="/"><i class="feather-log-out me-1"></i>
+												Cerrar
+												Sesión</a>
+											<a class="dropdown-item" href="/history/{{id}}"><i
+													class="feather-book me-1"></i> Historial</a>
+										</div>
+
+									</ul>
+								</li>
+							</ul>
+						</div>
+
+
+					</div>
+				</nav>
+			</div>
+		</header>
+		<!-- /Header -->
+
+
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-12">
+						<div class="breadcrumb-list">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/{{id}}">Inicio</a></li>
+
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+
+
+
+		<!-- Course -->
+		<section class="course-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9">
+
+						<!-- Filter -->
+						<div class="showing-list">
+							<div class="row">
+								<div class="col-lg-4 align-self-center">
+									<div class="d-flex align-items-center">
+										<div class="show-result">
+											<h4>Mostrando cursos</h4>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="show-filter add-course-info ">
+										<form action="#">
+											<div class="row gx-2 align-items-center">
+												<div class="col-md-6 col-item">
+													<div class=" search-group">
+														<i class="feather-search"></i>
+														<input type="text" class="form-control"
+															placeholder="Buscar cursos">
+													</div>
+												</div>
+											
+											</div>
+										</form>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- /Filter -->
+
+						<div class="row">
+							{{#posts}}
+							<div class="col-lg-4 col-md-6 d-flex mb-4">
+								<div class="card flex-fill d-flex flex-column">
+									<div class="product-img">
+										<a >
+											<img class="card-img-top" alt="" src="{{image_url}}"
+												style="height: 200px; object-fit: cover;">
+										</a>
+									</div>
+									<div class="card-body d-flex flex-column justify-content-between">
+										<h5 class="card-title"><a>{{job_title}}</a></h5>
+										<div class="flex-grow-1 d-flex flex-column justify-content-end">
+											<div class="course-info d-flex align-items-center mb-2">
+												<div class="rating-img d-flex align-items-center mr-3">
+													<img src="../assets/img/icon/people.svg">
+													<p class="mb-0">{{company_name}}</p>
+												</div>
+												<div class="course-view d-flex align-items-center">
+													<img src="../assets/img/icon/cart.svg" alt="">
+													<p class="mb-0">{{salary}}€</p>
+												</div>
+											</div>
+											
+										</div>
+										
+										<button type="button" class="btn btn-secondary edit-button"
+											data-is-true="{{isTrue}}" data-bs-toggle="modal"
+											data-bs-target="#editProfileModal" style="display: none;">
+											Editar Perfil
+										</button>
+										
+										<!-- Modal para editar trabajo -->
+										<div class="modal fade" id="editProfileModal" tabindex="-1"
+											aria-labelledby="editProfileModal" aria-hidden="true">
+											<div class="modal-dialog modal-lg modal-dialog-centered"
+												style="max-width: 1200px;">
+												<!-- Ancho más amplio -->
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="editProfileModal">Editar Trabajo
+														</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal"
+															aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<form role="form" action="/update-course/{{id}}" method="post"
+															class="w-100">
+															<!-- Información Básica del Trabajo -->
+															<fieldset id="basicInfo">
+																<div class="add-course-info">
+																	<div class="add-course-inner-header">
+																		<h4 class="section-title">Información Básica del
+																			Trabajo</h4>
+																	</div>
+																	<input type="hidden" name="pid" value="{{pid}}">
+																	<div class="add-course-form">
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Nombre de
+																				la empresa</label>
+																			<input name="company_name" type="text"
+																				class="form-control"
+																				placeholder="Nombre de la empresa"
+																				required value="{{company_name}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Título del
+																				Trabajo</label>
+																			<input name="job_title" type="text"
+																				class="form-control"
+																				placeholder="Título del trabajo"
+																				required value="{{job_title}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Subtítulo
+																				del trabajo</label>
+																			<input name="job_subtitle" type="text"
+																				class="form-control"
+																				placeholder="Subtítulo del trabajo"
+																				required value="{{job_subtitle}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Salario
+																				Estimado</label>
+																			<input name="salary" type="number"
+																				step="0.01" class="form-control"
+																				placeholder="Salario estimado"
+																				required value="{{salary}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Categoría
+																				del Trabajo</label>
+																			<select name="job_category"
+																				class="form-control select" required>
+																				<option value="" disabled selected >
+																					Selecciona una categoría</option>
+																				<option>Desarrollador de Software
+																				</option>
+																				<option>Diseñador UX/UI</option>
+																				<option>Administrador de Base de Datos
+																				</option>
+																				<option>Analista de Datos</option>
+																				<option>Marketing Digital</option>
+																				<option>Gestor de Proyectos</option>
+																				<option>Soporte Técnico</option>
+																				<option>Consultor</option>
+																			</select>
+																		</div>
+																		<div class="input-block mb-4">
+																			<label
+																				class="form-control-label">Descripción
+																				del Trabajo</label>
+																			<textarea name="job_description"
+																				style="resize: none; width: 100%"
+																				class="form-control"
+																				rows="5">{{job_description}}</textarea>
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">URL de la
+																				imagen del trabajo</label>
+																			<input name="image_url" type="url"
+																				class="form-control"
+																				placeholder="URL de la imagen"
+																				value="{{image_url}} " required pattern="https://.*" >
+																		</div>
+																	</div>
+																</div>
+															</fieldset>
+
+															<!-- Detalles Adicionales del Trabajo -->
+															<fieldset id="additionalDetails">
+																<div class="add-course-info">
+																	<div class="add-course-inner-header">
+																		<h4 class="section-title">Detalles Adicionales
+																			del Trabajo</h4>
+																	</div>
+																	<div class="add-course-form">
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Requisitos
+																				del Trabajo</label>
+																			<textarea name="job_requirements"
+																				style="resize: none; width: 100%"
+																				class="form-control"
+																				rows="4">{{job_requirements}}</textarea>
+																		</div>
+																		<div class="input-block mb-4">
+																			<label
+																				class="form-control-label">Ubicación</label>
+																			<input name="location" type="text"
+																				class="form-control"
+																				placeholder="Ubicación del trabajo"
+																				value="{{location}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Duración
+																				del Trabajo</label>
+																			<input name="job_duration" type="text"
+																				class="form-control"
+																				placeholder="Ej. 6 meses, tiempo completo, remoto"
+																				value="{{job_duration}}">
+																		</div>
+																		<div class="input-block mb-4">
+																			<label class="form-control-label">Fecha de
+																				Publicación</label>
+																			<input name="posting_date" type="date"
+																				class="form-control"
+																				value="{{posting_date}}">
+																		</div>
+																	</div>
+																</div>
+															</fieldset>
+
+															<!-- Botón de Guardar Cambios -->
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal">Cancelar</button>
+																<button type="submit" class="btn btn-primary">Guardar
+																	Cambios</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							{{/posts}}
+
+							{{^posts}}
+							<p>No hay posts creados.</p>
+							{{/posts}}
+						</div>
+
+						
+
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<!-- /Course -->
+
+		<!-- Footer -->
+		<footer class="footer">
+
+			<!-- Footer Top -->
+			<div class="footer-top aos" data-aos="fade-up">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-8">
+
+							<!-- Footer Widget -->
+							<div class="footer-widget footer-about">
+								<div class="footer-logo">
+									<img src="../assets/img/prodixLogo.png" alt="logo">
+								</div>
+								<div class="">
+									<p>
+										Descubre cursos gratuitos en Tatademy. Aprende a tu propio ritmo, desde
+										cualquier lugar. ¡Únete a nuestra comunidad hoy!
+									</p>
+								</div>
+							</div>
+							<!-- /Footer Widget -->
+
+						</div>
+
+
+						<div class="col-lg-4 col-md-6">
+
+							<!-- Footer Widget -->
+							<div class="footer-widget footer-contact">
+								<h2 class="footer-title">Contacto</h2>
+								<div class="footer-contact-info">
+									<div class="footer-address">
+										<img src="../assets/img/icon/icon-20.svg" alt="" class="img-fluid">
+										<p> C. Tulipán, s/n, Móstoles<br> Madrid, 28933</p>
+									</div>
+									<p>
+										<img src="../assets/img/icon/icon-19.svg" alt="" class="img-fluid">
+										<a href="mailto:tatademy@gmail.com">prodix@gmail.com</a>
+									</p>
+								</div>
+							</div>
+							<!-- /Footer Widget -->
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- /Footer Top -->
+
+			<!-- Footer Bottom -->
+			<div class="footer-bottom">
+				<div class="container">
+
+					<!-- Copyright -->
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="privacy-policy">
+									<ul>
+										<li><a href="term-condition.html">Terminos y condiciones</a></li>
+										<li><a href="privacy-policy.html">Política de privacidad</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="copyright-text">
+									<p class="mb-0">&copy; 2024 DAW G1. Todos los derechos reservados.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Copyright -->
+
+				</div>
+			</div>
+			<!-- /Footer Bottom -->
+
+		</footer>
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- Bootstrap Core JS -->
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Select2 JS -->
+	<script src="../assets/plugins/select2/js/select2.min.js"></script>
+
+	<!-- Sticky Sidebar JS -->
+	<script src="../assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+	<script src="../assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+
+</body>
+
+</html>

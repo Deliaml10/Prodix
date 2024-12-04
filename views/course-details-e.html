@@ -246,7 +246,13 @@
 												<div class="course-fee">
 												<h2>{{post.salary}}</h2>
 												</div>
-												<a href="#" class="btn btn-enroll w-100">Contratar</a>
+												<form method="POST" action="/subscriptions-e/{{post.pid}}/{{id}}">
+													<input type="hidden" name="pid" value="{{post.pid}}">
+													<input type="hidden" name="id" value="{{id}}">
+													<button class="btn submit-btn" id="botonInscribirse" {{#deshabilitado}}disabled{{/deshabilitado}}>
+														Contratar
+													  </button>
+												  </form>
 											</div>
 										</div>
 									</div>

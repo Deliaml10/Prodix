@@ -9,9 +9,7 @@ function validateUser(id) {
 }
 
 router.get('/', (req, res) => {
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-    res.render('index', { username:null, id:null,foto:null,type:null,  posts , posts_e });
+    res.render('index',{username:null, id:null,foto:null,type:null});
 });
 
 router.get('/course-grid/:id?', (req, res) => {
@@ -19,14 +17,14 @@ router.get('/course-grid/:id?', (req, res) => {
     const id = req.params.id;
 
     if (id === undefined) {
-        res.render('course-grid', {  username:null, id:null,foto:null,type:null, posts });
+        res.render('course-grid', { id: null, posts });
     } else {
         let user = validateUser(id); 
         
         if (user) {
-            res.render('course-grid', { username: user.name, id:user.id, foto:user.foto, type:user.userType, posts });
+            res.render('course-grid', { id: user.id, posts });
         } else {
-            res.render('course-grid', { username:null, id:null,foto:null,type:null, posts });
+            res.render('course-grid', { id: null, posts });
         }
     }
 });
@@ -38,13 +36,13 @@ router.get('/course-grid-e/:id?', (req, res) => {
     const id = req.params.id;
 
     if (id === undefined) {
-        res.render('course-grid-e', {  username:null, id:null,foto:null,type:null, posts, isTrue:false });
+        res.render('course-grid-e', { id: null, posts });
     } else {
         let user = validateUser(id); // Verificamos la existencia del usuario
         if (user) {
-            res.render('course-grid-e', { username: user.name, id:user.id, foto:user.foto, type:user.userType , posts, isTrue:false });
+            res.render('course-grid-e', { id: user.id, posts });
         } else {
-            res.render('course-grid-e', { username:null, id:null,foto:null,type:null, posts ,isTrue:false});
+            res.render('course-grid-e', { id: null, posts });
         }
     }
 });
@@ -59,14 +57,7 @@ router.get('/course-details-e/:pid/:id?', (req, res) => {
 
     let post = service.getPoste(pid);
 
-    
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        res.render('course-details-e', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
-
     res.render('course-details-e', { id, post });
-    }
 });
 
 
@@ -78,14 +69,8 @@ router.get('/course-details/:pid/:id?', (req, res) => {
     const pid = req.params.pid;
 
     let post = service.getPost(pid);
-    
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        res.render('course-details', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
 
     res.render('course-details', { id, post });
-    }
 });
 
 router.post('/course-details/:pid/:id?', (req, res) => {
@@ -94,22 +79,14 @@ router.post('/course-details/:pid/:id?', (req, res) => {
     const id = req.params.id || null;
 
     let post = service.getPost(postId);
-   
 
     cname = cname.toLowerCase();
     cname = cname.charAt(0).toUpperCase() + cname.slice(1);
     asunto = asunto.charAt(0).toUpperCase() + asunto.slice(1);
 
-    if (id!==null){
-        let user = validateUser(id); // Verificamos la existencia del usuario
-        service.addComment(postId, { cname:user.name, asunto, comment, foto:user.foto});
-        res.render('course-details', {  username: user.name, id:user.id, foto:user.foto, type:user.userType, post });
-    }else{
-    service.addComment(postId, { cname, asunto, comment, foto:'/assets/img/user/3686930.png' });
-    res.render('course-details', { id, post });
-    }
+    service.addComment(postId, { cname, asunto, comment });
 
-    
+    res.render('course-details', { id, post });
 });
 
 //nuevo post estudiante
@@ -133,10 +110,7 @@ router.post('/add-course-e/:id', (req, res) => {
     let user=service.getUser(id);
     service.addPoste({ full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title, id });
 
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 //nuevo post empresa
@@ -153,11 +127,9 @@ router.post('/add-course/:id', (req, res) => {
     salary = parseFloat(salary).toFixed(2);   
     company_name = company_name.charAt(0).toUpperCase() + company_name.slice(1);
     let user=service.getUser(id);
-    service.addPost({ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id },null);
-    
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
+    service.addPost({ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id });
+
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 
@@ -174,17 +146,14 @@ router.get('/faq/:id?', (req, res) => {
 
 router.get('/:id', (req, res) => {
     let user=service.getUser(req.params.id)
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
+
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 router.get('/delete/:id', (req, res) => {
     service.deleteUser(req.params.id);
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
     res.render('index', { 
-        username:null, id:null ,foto:null,type:null, posts, posts_e
+        username:null, id:null ,foto:null,type:null
     });
 });
 
@@ -252,17 +221,15 @@ router.get('/faq/:id?', (req, res) => {
 
 router.get('/:id', (req, res) => {
     let user=service.getUser(req.params.id)
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
+
+    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType});
 });
 
 router.get('/delete/:id', (req, res) => {
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+
     service.deleteUser(req.params.id);
     res.render('index', { 
-        username:null, id:null ,foto:null,type:null, posts, posts_e
+        username:null, id:null ,foto:null,type:null
     });
 });
 
@@ -277,13 +244,13 @@ router.get('/history/:id?', (req, res) => {
         let hasPoste = posts.some(post => post.hasOwnProperty('full_name'));
 
         if (hasPost && hasPoste) {
-            res.render('course-grid', { username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, isTrue:false }); 
+            res.render('course-grid', { id: user.id, posts }); 
             hasPosts = true;
         } else if (hasPost) {
-            res.render('course-grid', { username: user.name, id:user.id, foto:user.foto, type:user.userType, posts ,isTrue:true});
+            res.render('course-grid', { id: user.id, posts });
             hasPosts = true;
         } else if (hasPoste) {
-            res.render('course-grid-e', { username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, isTrue:true }); 
+            res.render('course-grid-e', { id: user.id, posts }); 
             hasPosts = true;
         } 
     }
@@ -292,51 +259,48 @@ router.get('/history/:id?', (req, res) => {
     }
 });
 
+router.get('/subscriptions/:id?', (req, res) => {
+    const id = req.params.id;
+    let posts = service.getsubscriptions(id)
 
-router.post('/update-profile/:id', (req, res) => {
-   
-    let id=req.params.id
-   let {name,email,password,foto,ubicación,nacimiento,estudios,trabajos,userType} = req.body;
-    let user= service.editUser(id,{name,email,password,foto,ubicación,nacimiento,estudios,trabajos,userType});
- 
+    res.render('subscriptions', { posts});
 
-    res.render('miPerfil', { user });
-
+    
 });
 
 
-router.post('/update-course-e/:id', (req, res) => {
-   
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
-    let { pid,full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title } = req.body;
-    let id=req.params.id
-    full_name = full_name.charAt(0).toUpperCase() + full_name.slice(1);
-    email = email.toLowerCase();
-    service.editPoste(pid,{ full_name, email, phone, location, profile_picture_url, education, work_experience, skills, languages, title, id });
+router.post('/subscriptions/:pid?/:id?', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    const pid = req.params.pid;
+    let post = service.getPost(pid); 
     let user = service.getUser(id);
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e});
- 
- });
+    service.addSubscription(user, post);
 
- 
-router.post('/update-course/:id', (req, res) => {
-    let posts = [service.getPost("3"), service.getPost("7"), service.getPost("2"), service.getPost("5") , service.getPost("0"), service.getPost("9")];
-    let posts_e = [service.getPoste("3"), service.getPoste("7"), service.getPoste("2"), service.getPoste("5") , service.getPoste("0"), service.getPoste("9")];
+    
+});
 
-    let id=req.params.id
-    let { pid,company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date } = req.body;
-    salary = parseFloat(salary).toFixed(2);   
-    company_name = company_name.charAt(0).toUpperCase() + company_name.slice(1);
-    service.editPost(pid,{ company_name, job_title, job_subtitle, salary, job_category, job_description, image_url, job_requirements, location, job_duration, posting_date, id });
+router.get('/subscriptions-e/:id?', (req, res) => {
+    const id = req.params.id;
+    let posts = service.getsubscriptions(id)
 
+    res.render('subscriptions-e', { posts});
+
+    
+});
+
+
+router.post('/subscriptions-e/:pid?/:id?', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    const pid = req.params.pid;
+    let post = service.getPoste(pid); 
     let user = service.getUser(id);
-    res.render('index', {username: user.name, id:user.id, foto:user.foto, type:user.userType, posts, posts_e}); 
- 
- });
- 
- 
+    service.addSubscription(user, post);
+    console.log(user.subscriptions)
 
+    
+});
 export default router;
 
 

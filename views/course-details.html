@@ -36,6 +36,11 @@
 
 		
 <script>
+	const boton = document.getElementById('botonInscribirse');
+
+boton.addEventListener('click', function() {
+  this.disabled = true;
+});
 	window.onload = function () {
 
 
@@ -302,7 +307,13 @@
 												<div class="course-fee">
 												<h2>{{post.salary}}€</h2>
 												</div>
-												<a href="#" class="btn btn-enroll w-100">Inscribirse</a>
+												<form method="POST" action="/subscriptions/{{post.pid}}/{{id}}">
+													<input type="hidden" name="pid" value="{{post.pid}}">
+													<input type="hidden" name="id" value="{{id}}">
+													<button class="btn submit-btn" id="botonInscribirse" {{#deshabilitado}}disabled{{/deshabilitado}}>
+														Inscribirse
+													  </button>
+												  </form>
 											</div>
 										</div>
 									</div>
