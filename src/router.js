@@ -15,7 +15,15 @@ router.get('/', (req, res) => {
 router.get('/course-grid/:id?', (req, res) => {
     let posts = service.getPosts();
     const id = req.params.id;
-
+    if (req.query.posts) {
+        try {
+            // Decodificar la cadena de texto de la query y luego parsearla en un objeto JavaScript
+            posts = JSON.parse(decodeURIComponent(req.query.posts));
+        } catch (error) {
+            console.error("Error al decodificar los posts:", error);
+            posts = service.getPosts(); // Si hay error, obtener los posts completos
+        }
+    }
     if (id === undefined) {
         res.render('course-grid', { id: null, posts });
     } else {
@@ -32,13 +40,18 @@ router.get('/course-grid/:id?', (req, res) => {
 //estudiantes
 
 router.get('/course-grid-e/:id?', (req, res) => {
-    let posts = service.getPostse();
+    let posts = service.getPostse(); // Obtén los posts completos inicialmente
     const id = req.params.id;
+    
+    // Si la query string tiene los posts filtrados, los deserializas
+    if (req.query.posts) {
+        posts = JSON.parse(decodeURIComponent(req.query.posts)); // Decodificar y parsear la lista de posts filtrados
+    }
 
     if (id === undefined) {
         res.render('course-grid-e', { id: null, posts });
     } else {
-        let user = validateUser(id); // Verificamos la existencia del usuario
+        let user = validateUser(id); // Verificar la existencia del usuario
         if (user) {
             res.render('course-grid-e', { id: user.id, posts });
         } else {
@@ -46,6 +59,7 @@ router.get('/course-grid-e/:id?', (req, res) => {
         }
     }
 });
+
 
 //estudiante
 
@@ -271,7 +285,6 @@ router.get('/subscriptions/:id?', (req, res) => {
 
 router.post('/subscriptions/:pid?/:id?', (req, res) => {
     const id = req.params.id;
-    console.log(id);
     const pid = req.params.pid;
     let post = service.getPost(pid); 
     let user = service.getUser(id);
@@ -301,6 +314,25 @@ router.post('/subscriptions-e/:pid?/:id?', (req, res) => {
 
     
 });
+
+router.post('/search', (req, res) => {
+    const query = req.body.query;
+    console.log(query);
+
+    // Obtener los posts y filtrarlos
+    const posts = service.getPosts();
+    const filteredPosts = posts.filter((post) =>
+        post.job_title.toLowerCase().includes(query.toLowerCase())
+    );
+    console.log(filteredPosts);
+
+    // Redirigir a la ruta GET de course-grid-e con los posts filtrados
+    // Convertimos los posts filtrados en una cadena JSON para pasarlos en la query string
+    const filteredPostsString = JSON.stringify(filteredPosts);
+    res.redirect(`/course-grid?posts=${encodeURIComponent(filteredPostsString)}`);
+});
+
+
 export default router;
 
 

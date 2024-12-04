@@ -202,21 +202,24 @@
 									</div>
 								</div>
 								<div class="col-lg-8">
-									<div class="show-filter add-course-info ">
-										<form action="#">
+									<div class="show-filter add-course-info">
+										<form id="searchForm" method="POST" action="/search-e">
 											<div class="row gx-2 align-items-center">
 												<div class="col-md-6 col-item">
-													<div class=" search-group">
+													<div class="search-group">
 														<i class="feather-search"></i>
-														<input type="text" class="form-control"
-															placeholder="Buscar estudiantes">
+														<input type="text" id="searchInput" name="query" class="form-control" placeholder="Buscar estudiantes">
 													</div>
 												</div>
-												
+												<div class="col-md-6 col-item">
+													<button type="submit" class="btn btn-primary">Buscar</button>
+												</div>
 											</div>
 										</form>
 									</div>
 								</div>
+								
+								
 
 							</div>
 						</div>
@@ -519,6 +522,7 @@
 
 	<!-- Custom JS -->
 	<script src="../assets/js/script.js"></script>
+	
 
 </body>
 

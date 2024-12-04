@@ -15,6 +15,7 @@ export function getUsers(){
     return values;
 }
 
+
 export function getUser(id){
     return users.get(id);
 }
@@ -213,4 +214,4 @@ addPoste({
     title: "Gestora de Recursos Humanos"
 });
 
-addUser({ name: "Ana García", email: "ana.garcia@example.com", password: "password123", foto: "https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?cs=srgb&dl=pexels-hannah-nelson-390257-1065084.jpg&fm=jpg", ubicación: "Barcelona, España", nacimiento: "1995-08-15", estudios: "Licenciatura en Diseño Gráfico, Universidad de Barcelona", trabajos: "Diseñadora UX/UI en Creativa Studio", userType: "empresa" });
+addUser({ name: "Ana García", email: "ana.garcia@example.com", password: "password123", foto: "https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?cs=srgb&dl=pexels-hannah-nelson-390257-1065084.jpg&fm=jpg", ubicación: "Barcelona, España", nacimiento: "1995-08-15", estudios: "Licenciatura en Diseño Gráfico, Universidad de Barcelona", trabajos: "Diseñadora UX/UI en Creativa Studio", userType: "estudiante" });
